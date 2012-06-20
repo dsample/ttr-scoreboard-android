@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/button_endgame" 
+        android:onClick="onEndGameClicked" 
+        android:title="@string/button_endgame" 
+        android:showAsAction="always|withText"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel" />
+    <item android:id="@+id/button_discardgame" 
+        android:showAsAction="never|withText" 
+        android:onClick="onDiscardGameClicked" 
+        android:title="@string/button_discardgame"
+        android:icon="@android:drawable/ic_menu_delete" />
+    
+
+</menu>
