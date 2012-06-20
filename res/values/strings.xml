@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, StartActivity!</string>
+    <string name="app_name">Ticket To Ride</string>
+    <string name="newgame">New game</string>
+    <string name="continuegame">Continue game</string>
+    <string name="map_usa">USA</string>
+    <string name="map_europe">Europe</string>
+    <string name="map_switzerland">Switzerland</string>
+    <string name="button_continue">Continue</string>
+    <string name="button_endgame">End game</string>
+    <string name="button_discardgame">Discard game</string>
+
+</resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="player_selection_checkbox" type="id" />
+    <item name="player_selection_continuebutton" type="id" />
+    
+    <item name="state_mainmenu" type="id" />
+    <item name="state_boardselection" type="id" />
+    <item name="state_playerselection" type="id" />
+    <item name="state_routescoring" type="id" />
+    <item name="state_bonusscoring" type="id" />
+    <item name="state_finalscores" type="id" />
+    
+    <item name="button_discard" type="id" />
+    <item name="button_mainmenu_newgame" type="id" />
+    <item name="button_mainmenu_continuegame" type="id" />
+    <item name="button_boardselection_continue" type="id" />
+    <item name="button_playerselection_continue" type="id" />
+    <item name="button_routescoring_endgame" type="id" />
+    <item name="button_finalscoring_finish" type="id" />
+</resources>
