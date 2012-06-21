@@ -11,5 +11,7 @@
     <string name="button_continue">Continue</string>
     <string name="button_endgame">End game</string>
     <string name="button_discardgame">Discard game</string>
+    <string name="button_finalscores_finish">Finish</string>
+    <string name="button_bonusscoring_finish">Finish</string>
 
 </resources>

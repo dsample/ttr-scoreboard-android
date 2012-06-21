@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@id/button_playerselection_continue" android:title="@string/button_continue" android:showAsAction="always|withText"></item>
+    
+
+</menu>

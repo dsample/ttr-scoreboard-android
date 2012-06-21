@@ -1,10 +1,11 @@
-package uk.me.sample.android.ttrscoreboard;
+package uk.me.sample.android.ttrscoreboard.objects;
 
 import java.util.ArrayList;
 
+
 public class Player {
-	protected String name;
-	protected Integer colour;
+	public String name;
+	public Integer colour;
 	
 	protected ArrayList<Score> scores;
 

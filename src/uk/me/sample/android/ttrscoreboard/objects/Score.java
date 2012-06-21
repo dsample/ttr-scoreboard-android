@@ -1,4 +1,4 @@
-package uk.me.sample.android.ttrscoreboard;
+package uk.me.sample.android.ttrscoreboard.objects;
 
 public class Score {
 	String reason;

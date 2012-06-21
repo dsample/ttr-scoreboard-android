@@ -2,6 +2,10 @@ package uk.me.sample.android.ttrscoreboard;
 
 import java.util.ArrayList;
 
+import uk.me.sample.android.ttrscoreboard.objects.BoardRules;
+import uk.me.sample.android.ttrscoreboard.objects.Game;
+import uk.me.sample.android.ttrscoreboard.objects.Player;
+
 import android.app.Activity;
 import android.view.MenuInflater;
 import android.view.View;

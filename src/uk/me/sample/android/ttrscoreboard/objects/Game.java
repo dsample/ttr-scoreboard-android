@@ -1,7 +1,8 @@
-package uk.me.sample.android.ttrscoreboard;
+package uk.me.sample.android.ttrscoreboard.objects;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+
 
 public class Game {
 	private int timeInSeconds;

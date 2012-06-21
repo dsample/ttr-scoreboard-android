@@ -16,5 +16,6 @@
     <item name="button_boardselection_continue" type="id" />
     <item name="button_playerselection_continue" type="id" />
     <item name="button_routescoring_endgame" type="id" />
-    <item name="button_finalscoring_finish" type="id" />
+    <item name="button_bonusscoring_finish" type="id" />
+    <item name="button_finalscores_finish" type="id" />
 </resources>
