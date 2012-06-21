@@ -5,15 +5,15 @@
     android:orientation="vertical" >
 
 	<Button
-	    android:id="@+id/button_newgame"
+	    android:id="@id/button_mainmenu_newgame"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:text="@string/newgame" android:onClick="newGame"/>
+	    android:text="@string/newgame" android:onClick="onClick"/>
 	
 	<Button
-	    android:id="@+id/button_continuegame"
+	    android:id="@id/button_mainmenu_continuegame"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:text="@string/continuegame" />
+	    android:text="@string/continuegame" android:onClick="onClick"/>
 
 </LinearLayout>
