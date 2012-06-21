@@ -40,7 +40,7 @@ public class GameActivity extends Activity
 		Log.d("TTR", "onCreate beginning");
 		super.onCreate(savedInstanceState);
 		boards = new ArrayList<BoardRules>();
-		createBoards();
+		this.boards = BoardRules.knownBoards();
 		// TODO Load game data from storage
 		game = new Game();
 		SharedPreferences prefs = getPreferences(MODE_PRIVATE);
@@ -189,34 +189,6 @@ public class GameActivity extends Activity
 		Log.d("TTR", "calcDp beginning");
 		return (int) (getResources().getDisplayMetrics().density * pixels + 0.5f);
 	}
-
-	// Boards
-	
-	public void createBoards() {
-		Log.d("TTR", "createBoards beginning");
-    	this.boards = new ArrayList<BoardRules>();
-    	
-    	BoardRules europe = new BoardRules("Europe", 2);
-    	Player[] players = {
-    		new Player("Red", Color.parseColor("#CC0000")),
-    		new Player("Blue", Color.parseColor("#0099CC")),
-    		new Player("Yellow", Color.parseColor("#FFBB33")),
-    		new Player("Green", Color.parseColor("#669900")),
-    		new Player("Black", Color.parseColor("#000000")) };
-    	europe.setPlayers(players);
-    	Integer[] routeScores = { 1, 2, 4, 7, 0, 15, 0, 21 };
-    	europe.setRouteScores(routeScores);
-
-    	BoardBonus bonus = new BoardBonus("Longest route");
-    	bonus.setNumberOfWinners(1);
-    	bonus.setPossibleBonusesPerWinner(1);
-    	Integer[] bonusScores = { 10 };
-    	bonus.setScoresPerTicket(bonusScores);
-    	BoardBonus[] bonuses = { bonus };
-    	europe.setBonuses(bonuses);
-    	
-    	this.boards.add(europe);
-    }
 
 	// SCREENS
 	
