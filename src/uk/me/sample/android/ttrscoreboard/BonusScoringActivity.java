@@ -3,14 +3,13 @@ package uk.me.sample.android.ttrscoreboard;
 import uk.me.sample.android.ttrscoreboard.objects.Game;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 
-public class BonusScoringActivity extends Activity implements OnMenuItemClickListener {
+public class BonusScoringActivity extends Activity {
 	Game game;
 
 	@Override
@@ -45,7 +44,7 @@ public class BonusScoringActivity extends Activity implements OnMenuItemClickLis
 	}
 	
 	@Override
-	public boolean onMenuItemClick(MenuItem item) {
+	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case R.id.button_bonusscoring_finish:
 				Intent intent = new Intent(this, FinalScoresActivity.class);

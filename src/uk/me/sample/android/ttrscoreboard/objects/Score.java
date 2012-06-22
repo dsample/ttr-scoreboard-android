@@ -1,8 +1,5 @@
 package uk.me.sample.android.ttrscoreboard.objects;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import android.os.Parcel;
 import android.os.Parcelable;
 

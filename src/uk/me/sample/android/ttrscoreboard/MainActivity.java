@@ -1,7 +1,5 @@
 package uk.me.sample.android.ttrscoreboard;
 
-import java.util.ArrayList;
-
 import uk.me.sample.android.ttrscoreboard.objects.*;
 import android.app.Activity;
 import android.content.Intent;

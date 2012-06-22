@@ -1,9 +1,6 @@
 package uk.me.sample.android.ttrscoreboard.objects;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -60,6 +57,7 @@ public class Game implements Parcelable {
 	 * @return
 	 */
 	public static Game load() {
+		// If no game exists, return a new game
 		Game game = new Game();
 		return game;
 	}
@@ -88,14 +86,14 @@ public class Game implements Parcelable {
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
 		dest.writeInt(board.getId());
-		dest.writeParcelableArray((Player[]) players.toArray(), flags);
+		dest.writeTypedList(players);
 	}
 	
 	public Game(Parcel in) {
+		this.players = new ArrayList<Player>();
+
 		board = BoardRules.getBoard(in.readInt());
-		Player[] playerArray;
-		in.readParcelable(playerArray);
-		players = new ArrayList<Player>((ArrayList<Player>) Arrays.asList(playerArray));
+		in.readTypedList(players, Player.CREATOR);
 	}
 	
 	public static final Parcelable.Creator<Game> CREATOR = new Parcelable.Creator<Game>() {
