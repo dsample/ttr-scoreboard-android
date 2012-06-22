@@ -1,7 +1,6 @@
 package uk.me.sample.android.ttrscoreboard.objects;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -54,16 +53,15 @@ public class Player implements Parcelable {
 		dest.writeInt(id);
 		dest.writeString(name);
 		dest.writeInt(colour);
-		dest.writeParcelableArray((Score[]) scores.toArray(), flags);
+		dest.writeTypedList(scores);
 	}
 	
 	public Player(Parcel in) {
+		this.scores = new ArrayList<Score>();
+
 		id = in.readInt();
 		name = in.readString();
-		colour = in.readInt();
-		Score[] scoreArray;
-		in.readParcelableArray(scoreArray);
-		scores = new ArrayList<Score>((ArrayList<Score>) Arrays.asList(scoreArray));
+		in.readTypedList(scores, Score.CREATOR);
 	}
 	
 	public static final Parcelable.Creator<Player> CREATOR = new Parcelable.Creator<Player>() {

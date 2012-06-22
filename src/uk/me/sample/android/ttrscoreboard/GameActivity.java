@@ -1,7 +1,6 @@
 package uk.me.sample.android.ttrscoreboard;
 
 import java.util.ArrayList;
-import uk.me.sample.android.ttrscoreboard.objects.BoardBonus;
 import uk.me.sample.android.ttrscoreboard.objects.BoardRules;
 import uk.me.sample.android.ttrscoreboard.objects.Game;
 import uk.me.sample.android.ttrscoreboard.objects.Player;
@@ -9,7 +8,6 @@ import uk.me.sample.android.ttrscoreboard.objects.Player;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -214,7 +212,6 @@ public class GameActivity extends Activity
 		b.setId(R.id.button_mainmenu_continuegame);
 		b.setOnClickListener(this);
 		l.addView(b);
-
 	}
 	
 	private void screenBoardSelection() {

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import android.graphics.Color;
-import android.os.Parcel;
-import android.os.Parcelable;
 
 
 public class BoardRules {
