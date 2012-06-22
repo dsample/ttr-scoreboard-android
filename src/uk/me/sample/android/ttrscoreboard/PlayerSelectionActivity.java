@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
@@ -39,40 +38,43 @@ public class PlayerSelectionActivity extends Activity implements OnCheckedChange
     	LinearLayout container = (LinearLayout) findViewById(R.id.container);
     	container.removeAllViews();
 
-		int rowHeight = calcDp(48);
-
 		ArrayList<Player> players = game.getBoard().getPlayers();
-		container.removeAllViews();
 		
 		for (int i=0; i < players.size() ;i++) {
-			Player player = players.get(i);
-			
-			LinearLayout l = new LinearLayout(this);
-			l.setOrientation(LinearLayout.HORIZONTAL);
-			LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, rowHeight);
-			layoutParams.gravity = 0x10;
-			l.setLayoutParams(layoutParams);
-			TextView textview = new TextView(this);
-			textview.setText("");
-			textview.setBackgroundColor(player.colour.hashCode());
-			LayoutParams textviewParams = new LayoutParams(calcDp(3), LayoutParams.MATCH_PARENT);
-			textviewParams.gravity = 0x10;
-			textview.setLayoutParams(textviewParams);
-			l.addView(textview);
-			
-			CheckBox checkbox = new CheckBox(this);
-			LayoutParams checkboxParams = new LayoutParams(LayoutParams.MATCH_PARENT, rowHeight);
-			checkboxParams.gravity = 0x10;
-			checkbox.setLayoutParams(checkboxParams);
-			checkbox.setId(R.id.player_selection_checkbox);
-			checkbox.setTag(player);
-			checkbox.setText(player.name);
-			checkbox.setChecked(false);
-			checkbox.setOnCheckedChangeListener(this);
-			l.addView(checkbox);
-			
-			container.addView(l);
+			container.addView(playerView(players.get(i)));
 		}
+	}
+	
+	private LinearLayout playerView(Player player) {
+		int rowHeight = calcDp(48);
+
+		LinearLayout l = new LinearLayout(this);
+		l.setOrientation(LinearLayout.HORIZONTAL);
+		LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, rowHeight);
+		layoutParams.gravity = 0x10;
+		l.setLayoutParams(layoutParams);
+		
+		// Left bar
+		TextView textview = new TextView(this);
+		textview.setText("");
+		textview.setBackgroundColor(player.colour);
+		LayoutParams textviewParams = new LayoutParams(calcDp(3), LayoutParams.MATCH_PARENT);
+		textviewParams.gravity = 0x10;
+		textview.setLayoutParams(textviewParams);
+		l.addView(textview);
+		
+		CheckBox checkbox = new CheckBox(this);
+		LayoutParams checkboxParams = new LayoutParams(LayoutParams.MATCH_PARENT, rowHeight);
+		checkboxParams.gravity = 0x10;
+		checkbox.setLayoutParams(checkboxParams);
+		checkbox.setId(R.id.player_selection_checkbox);
+		checkbox.setTag(player);
+		checkbox.setText(player.name);
+		checkbox.setChecked(false);
+		checkbox.setOnCheckedChangeListener(this);
+		l.addView(checkbox);
+		
+		return l;
 	}
 	
 	@Override

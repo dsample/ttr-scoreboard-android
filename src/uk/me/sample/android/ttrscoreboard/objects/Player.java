@@ -9,11 +9,16 @@ import android.os.Parcelable;
 public class Player implements Parcelable {
 	public int id;
 	public String name;
-	public Integer colour;
+	public int colour;
 	
 	protected ArrayList<Score> scores;
 
-	public Player(int id, String name, Integer colour) {
+	@Override
+	public String toString() {
+		return "Player [id=" + id + ", name=" + name + ", colour=" + colour + "]";
+	}
+
+	public Player(int id, String name, int colour) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -61,6 +66,7 @@ public class Player implements Parcelable {
 
 		id = in.readInt();
 		name = in.readString();
+		colour = in.readInt();
 		in.readTypedList(scores, Score.CREATOR);
 	}
 	

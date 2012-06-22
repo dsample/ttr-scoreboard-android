@@ -31,12 +31,23 @@ public class Game implements Parcelable {
 	}
 	
 	private int indexOfPlayer(Player player) {
+		return indexOfPlayer(player.id);
+	}
+	private int indexOfPlayer(int playerId) {
 		for (int i=0; i < this.players.size() ;i++) {
-			if (this.players.get(i).colour == player.colour) {
+			if (this.players.get(i).id == playerId) {
 				return i;
 			}
 		}
 		return -1;
+	}
+	
+	public Player getPlayer(int index) {
+		return players.get(index);
+	}
+
+	public Player getPlayerById(int id) {
+		return getPlayer(indexOfPlayer(id));
 	}
 	
 	public void addPlayer(Player player) {

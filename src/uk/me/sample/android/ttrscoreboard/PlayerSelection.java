@@ -56,7 +56,7 @@ public class PlayerSelection implements OnClickListener, OnCheckedChangeListener
 			l.setLayoutParams(layoutParams);
 			TextView textview = new TextView(ctx);
 			textview.setText("");
-			textview.setBackgroundColor(player.colour.hashCode());
+			textview.setBackgroundColor(player.colour);
 			LayoutParams textviewParams = new LayoutParams(calcDp(3), LayoutParams.MATCH_PARENT);
 			textviewParams.gravity = 0x10;
 			textview.setLayoutParams(textviewParams);
@@ -86,7 +86,7 @@ public class PlayerSelection implements OnClickListener, OnCheckedChangeListener
 	@Override
 	public void onClick(View v) {
 		ctx.setTitle("Route scores");
-		ctx.setContentView(R.layout.game);
+		// ctx.setContentView(R.layout.game);
 	}
 
 	@Override
