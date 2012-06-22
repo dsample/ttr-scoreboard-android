@@ -264,7 +264,7 @@ public class GameActivity extends Activity
 			l.setLayoutParams(layoutParams);
 			TextView textview = new TextView(this);
 			textview.setText("");
-			textview.setBackgroundColor(player.colour.hashCode());
+			textview.setBackgroundColor(player.colour);
 			LayoutParams textviewParams = new LayoutParams(calcDp(3), LayoutParams.MATCH_PARENT);
 			textviewParams.gravity = 0x10;
 			textview.setLayoutParams(textviewParams);
