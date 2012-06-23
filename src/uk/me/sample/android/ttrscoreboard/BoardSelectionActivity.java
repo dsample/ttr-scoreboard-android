@@ -42,7 +42,7 @@ public class BoardSelectionActivity extends Activity implements OnClickListener 
     		Button b = new Button(this);
     		b.setText(board.getName());
     		b.setTag(board);
-    		b.setId(R.id.button_boardselection_continue);
+    		b.setId(R.id.button_boardselection);
     		b.setOnClickListener(this);
     		l.addView(b);
     	}
@@ -71,7 +71,7 @@ public class BoardSelectionActivity extends Activity implements OnClickListener 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-			case R.id.button_boardselection_continue:
+			case R.id.button_boardselection:
 				this.game.setBoard((BoardRules) v.getTag());
 				Intent intent = new Intent(this, PlayerSelectionActivity.class);
 				intent.putExtra("game", this.game);

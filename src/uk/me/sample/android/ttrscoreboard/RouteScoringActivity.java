@@ -1,5 +1,7 @@
 package uk.me.sample.android.ttrscoreboard;
 
+import java.util.ArrayList;
+
 import uk.me.sample.android.ttrscoreboard.objects.Game;
 import uk.me.sample.android.ttrscoreboard.objects.Player;
 import android.app.Activity;
@@ -13,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
@@ -49,6 +52,8 @@ public class RouteScoringActivity extends Activity implements OnClickListener {
 		
 		LayoutInflater inflater = getLayoutInflater();
 		RelativeLayout l = (RelativeLayout) inflater.inflate(R.layout.routescoring_player, null);
+
+		l.setTag("Player " + player.id);
 
 		LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, calcDp(48));
 		l.setLayoutParams(layoutParams);
@@ -135,7 +140,7 @@ public class RouteScoringActivity extends Activity implements OnClickListener {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-			case R.id.button_routescoring_endgame:
+			case R.id.button_continue:
 				Intent intent = new Intent(this, TicketScoringActivity.class);
 				startActivity(intent);
 				break;
@@ -154,13 +159,51 @@ public class RouteScoringActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		switch (v.getId()) {
 			case R.id.addButton:
-				Player player = this.game.getPlayerById((Integer) v.getTag());
-				player.newScore("Route", 8);
-				RelativeLayout l = (RelativeLayout) v.getParent();
-				TextView score = (TextView) l.findViewById(R.id.player_score);
+				LinearLayout mainContainer = (LinearLayout) findViewById(R.id.container);
+				RelativeLayout panel = (RelativeLayout) findViewById(R.id.routeselector);
+				if (panel != null) {
+					mainContainer.removeView(panel);
+				}
+				
+				LayoutInflater inflater = getLayoutInflater();
+				RelativeLayout l = (RelativeLayout) inflater.inflate(R.layout.routescore_selector, null);
+				RelativeLayout.LayoutParams relParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
+				relParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+				l.setLayoutParams(relParams);
+				LinearLayout container = (LinearLayout) l.findViewById(R.id.buttoncontainer);
+				
+				container.removeAllViews();
+				Button button;
+				
+				ArrayList<Integer> routeScores = this.game.getBoard().getRouteScores();
+				for (int i=0; i < routeScores.size() ;i++) {
+					Integer routeScore = routeScores.get(i);
+					if (routeScore > 0) {
+						button = new Button(this);
+						button.setId(R.id.button_routescoring_scorebutton);
+						button.setText(Integer.toString(i+1));
+						button.setTag(R.id.object_playerid, v.getTag());
+						button.setTag(R.id.object_routelength, i+1);
+						button.setTag(R.id.object_routescore, routeScore);
+						LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+						button.setLayoutParams(layoutParams);
+						container.addView(button);
+					}
+				}
+				
+				mainContainer.addView(l);
+				break;
+			case R.id.button_routescoring_scorebutton:
+				Log.d("BUTTON", "Score button");
+				Integer RouteScore = (Integer) v.getTag(R.id.object_routescore);
+				Integer RouteLength = (Integer) v.getTag(R.id.object_routelength);
+				
+				Player player = this.game.getPlayerById((Integer) v.getTag(R.id.object_playerid));
+				player.newScore("Route (" + RouteLength + ")", RouteScore);
+				RelativeLayout rel = (RelativeLayout) v.findViewWithTag("Player " + v.getTag(R.id.object_playerid).toString());
+				TextView score = (TextView) rel.findViewById(R.id.player_score);
 				score.setText(Integer.toString(player.getTotalScore()));
 				break;
 		}

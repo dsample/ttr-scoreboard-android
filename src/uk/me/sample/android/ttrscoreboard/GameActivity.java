@@ -154,7 +154,7 @@ public class GameActivity extends Activity
 				state = prefs.getInt("state", R.id.state_boardselection);
 				onResume();
 				break;
-			case R.id.button_boardselection_continue:
+			case R.id.button_boardselection:
 				this.game.setBoard((BoardRules) v.getTag());
 				screenPlayerSelection();
 				break;
@@ -229,7 +229,7 @@ public class GameActivity extends Activity
     		Button b = new Button(this);
     		b.setText(board.getName());
     		b.setTag(board);
-    		b.setId(R.id.button_boardselection_continue);
+    		b.setId(R.id.button_boardselection);
     		b.setOnClickListener(this);
     		l.addView(b);
     	}

@@ -22,5 +22,6 @@
     <string name="button_finalscores_finish">Finish</string>
     <string name="button_bonusscoring_finish">Finish</string>
     <string name="label_routescoring_addbutton">Add route score</string>
+    <string name="label_routescoring_lengthofroute">Select the length of the route</string>
 
 </resources>

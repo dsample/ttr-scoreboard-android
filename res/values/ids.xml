@@ -10,14 +10,20 @@
     <item name="state_bonusscoring" type="id" />
     <item name="state_finalscores" type="id" />
     
+    <item name="button_continue" type="id" />
     <item name="button_discard" type="id" />
     <item name="button_mainmenu_newgame" type="id" />
     <item name="button_mainmenu_continuegame" type="id" />
-    <item name="button_boardselection_continue" type="id" />
+    <item name="button_boardselection" type="id" />
     <item name="button_playerselection_continue" type="id" />
     <item name="button_routescoring_endgame" type="id" />
     <item name="button_routescoring_addscore" type="id" />
+    <item name="button_routescoring_scorebutton" type="id" />
     <item name="button_ticketscoring_endgame" type="id" />
     <item name="button_bonusscoring_finish" type="id" />
     <item name="button_finalscores_finish" type="id" />
+    
+    <item name="object_routescore" type="id" />
+    <item name="object_routelength" type="id" />
+    <item name="object_playerid" type="id" />
 </resources>
