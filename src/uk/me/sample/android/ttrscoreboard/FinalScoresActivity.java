@@ -1,34 +1,71 @@
 package uk.me.sample.android.ttrscoreboard;
 
 import uk.me.sample.android.ttrscoreboard.objects.Game;
+import uk.me.sample.android.ttrscoreboard.objects.Player;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.LinearLayout.LayoutParams;
 
 public class FinalScoresActivity extends Activity {
 	Game game;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+
+		this.game = (Game) getIntent().getParcelableExtra("game");
+
+		setContentView(R.layout.main);
 	}
 
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+		
+    	LinearLayout container = (LinearLayout) findViewById(R.id.container);
+    	container.removeAllViews();
+	
+		for (int i=0; i < game.playerCount() ;i++) {
+			Log.d("button", "player " + Integer.toString(i));
+			container.addView(playerView(game.getPlayer(i)));
+		}
+	}
+	
+	private RelativeLayout playerView(Player player) {
+		
+		LayoutInflater inflater = getLayoutInflater();
+		RelativeLayout l = (RelativeLayout) inflater.inflate(R.layout.player_justscores, null);
+
+		l.setTag("Player " + player.id);
+
+		LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, calcDp(48));
+		l.setLayoutParams(layoutParams);
+
+		View colour = (View) l.findViewById(R.id.colour);
+		colour.setBackgroundColor(player.colour);
+		TextView name = (TextView) l.findViewById(R.id.name);
+		name.setText(player.name);
+		TextView thisScore = (TextView) l.findViewById(R.id.player_score);
+		thisScore.setText(Integer.toString(player.getTotalScore()));
+		
+		return l;
 	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.actionbar_finalscores, menu);
+		menu.clear();
+		MenuItem finishButton = menu.add(1, R.id.button_mainmenu_newgame, 1, R.string.newgame);
+	    finishButton.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS + MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 		return true;
 	}
 
@@ -47,9 +84,10 @@ public class FinalScoresActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-			case R.id.button_finalscores_finish:
-				Intent intent = new Intent(this, MainActivity.class);
+			case R.id.button_mainmenu_newgame:
+				Intent intent = new Intent(this, BoardSelectionActivity.class);
 				startActivity(intent);
+				finish();
 				break;
 		}
 		return true;

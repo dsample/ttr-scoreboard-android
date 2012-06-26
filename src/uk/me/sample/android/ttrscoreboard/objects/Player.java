@@ -11,6 +11,7 @@ public class Player implements Parcelable {
 	public String name;
 	public int colour;
 	
+	
 	protected ArrayList<Score> scores;
 
 	@Override
@@ -34,8 +35,8 @@ public class Player implements Parcelable {
 		return score;
 	}
 	
-	public void newScore(String reason, int score) {
-		scores.add(new Score(reason, score));
+	public void newScore(int reasonId, String reason, int score) {
+		scores.add(new Score(reasonId, reason, score));
 	}
 	
 	// STATIC
