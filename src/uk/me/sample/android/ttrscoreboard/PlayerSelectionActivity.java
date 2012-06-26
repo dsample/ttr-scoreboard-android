@@ -79,14 +79,14 @@ public class PlayerSelectionActivity extends Activity implements OnCheckedChange
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.actionbar_playerselection, menu);
+		MenuItem continueButton = menu.add(1, R.id.button_continue, 1, R.string.button_continue);
+	    continueButton.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS + MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 		return true;
 	}
 
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
-		MenuItem menuitem = menu.findItem(R.id.button_playerselection_continue);
+		MenuItem menuitem = menu.findItem(R.id.button_continue);
 		
 		if (this.game.playerCount() >= 2) {
 			menuitem.setEnabled(true);
@@ -125,10 +125,11 @@ public class PlayerSelectionActivity extends Activity implements OnCheckedChange
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-			case R.id.button_playerselection_continue:
+			case R.id.button_continue:
 				Intent intent = new Intent(this, RouteScoringActivity.class);
 				intent.putExtra("game", game);
 				startActivity(intent);
+				finish();
 				break;
 		}
 		return true;

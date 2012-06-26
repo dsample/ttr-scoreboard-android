@@ -105,15 +105,6 @@ public class GameActivity extends Activity
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		Log.d("TTR", "onCreateOptionsMenu beginning");
-		this.menu = menu;
-		MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.actionbar_boardselection, menu);
-		return true;
-	}
-
-	@Override
 	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 		Log.d("TTR", "onCheckedChanged beginning");
 		switch (buttonView.getId()) {
@@ -295,8 +286,6 @@ public class GameActivity extends Activity
     	
 		actionbar.setHomeButtonEnabled(false);
 		actionbar.setDisplayHomeAsUpEnabled(false);
-		menu.clear();
-		MenuItem menuitem = menu.add(Menu.NONE, R.id.button_routescoring_endgame, Menu.NONE, R.string.button_endgame);
 
 	}
 	
@@ -309,9 +298,6 @@ public class GameActivity extends Activity
     	
 		actionbar.setHomeButtonEnabled(false);
 		actionbar.setDisplayHomeAsUpEnabled(false);
-		menu.clear();
-		MenuItem menuitem = menu.add(Menu.NONE, R.id.button_bonusscoring_finish, Menu.NONE, R.string.button_bonusscoring_finish);
-
 	}
 	
 	private void screenFinalScores() {
@@ -323,8 +309,6 @@ public class GameActivity extends Activity
     	
 		actionbar.setHomeButtonEnabled(false);
 		actionbar.setDisplayHomeAsUpEnabled(false);
-		menu.clear();
-		MenuItem menuitem = menu.add(Menu.NONE, R.id.player_selection_continuebutton, Menu.NONE, R.string.button_continue);
 	}
 
 	@Override

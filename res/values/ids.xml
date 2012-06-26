@@ -22,8 +22,13 @@
     <item name="button_ticketscoring_endgame" type="id" />
     <item name="button_bonusscoring_finish" type="id" />
     <item name="button_finalscores_finish" type="id" />
+    <item name="menuitem_keepopenswitch" type="id" />
     
     <item name="object_routescore" type="id" />
     <item name="object_routelength" type="id" />
     <item name="object_playerid" type="id" />
+    
+    <item name="score_route" type="id" />
+    <item name="score_ticket" type="id" />
+    <item name="score_bonus_longestroute" type="id" />
 </resources>

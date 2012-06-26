@@ -53,7 +53,7 @@ public class MainActivity extends Activity implements OnClickListener {
 					intent = new Intent(this, RouteScoringActivity.class);
 					break;
 				case R.id.state_bonusscoring:
-					intent = new Intent(this, BonusScoringActivity.class);
+					intent = new Intent(this, TicketScoringActivity.class);
 					break;
 				case R.id.state_finalscores:
 					intent = new Intent(this, FinalScoresActivity.class);
@@ -63,9 +63,11 @@ public class MainActivity extends Activity implements OnClickListener {
 					break;
 			}
 			startActivity(intent);
+			finish();
 		} else {
 			intent = new Intent(this, BoardSelectionActivity.class);
 			startActivity(intent);
+			finish();
 		}
 
 	}
@@ -88,6 +90,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			case R.id.button_mainmenu_newgame:
 				Intent intent = new Intent(this, BoardSelectionActivity.class);
 				startActivity(intent);
+				finish();
 				break;
 			case R.id.button_mainmenu_continuegame:
 				SharedPreferences prefs = getPreferences(MODE_PRIVATE);
@@ -95,12 +98,5 @@ public class MainActivity extends Activity implements OnClickListener {
 				onResume();
 				break;
 		}
-	}
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.actionbar_mainmenu, menu);
-		return true;
 	}
 }

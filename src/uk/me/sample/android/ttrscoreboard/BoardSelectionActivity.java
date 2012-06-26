@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import uk.me.sample.android.ttrscoreboard.objects.BoardRules;
 import uk.me.sample.android.ttrscoreboard.objects.Game;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +27,10 @@ public class BoardSelectionActivity extends Activity implements OnClickListener 
 		super.onCreate(savedInstanceState);
 
 		game = new Game();
+		
+		ActionBar actionbar = getActionBar();
+		actionbar.setDisplayHomeAsUpEnabled(false);
+		actionbar.setHomeButtonEnabled(false);
 	}
 
 	@Override
@@ -48,13 +53,6 @@ public class BoardSelectionActivity extends Activity implements OnClickListener 
     	}
 
 	}
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.actionbar_boardselection, menu);
-		return true;
-	}
 
 	@Override
 	protected void onPause() {
@@ -76,6 +74,7 @@ public class BoardSelectionActivity extends Activity implements OnClickListener 
 				Intent intent = new Intent(this, PlayerSelectionActivity.class);
 				intent.putExtra("game", this.game);
 				startActivity(intent);
+				finish();
 				break;
 		}
 	}

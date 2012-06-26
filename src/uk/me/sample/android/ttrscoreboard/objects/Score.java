@@ -4,10 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Score implements Parcelable {
+	int reasonId;
 	String reason;
 	Integer score;
 	
-	public Score(String reason, int score) {
+	public Score(int reasonId, String reason, int score) {
 		this.reason = reason;
 		this.score = score;
 	}

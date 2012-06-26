@@ -17,11 +17,16 @@
     <string name="map_switzerland">Switzerland</string>
     
     <string name="button_continue">Continue</string>
-    <string name="button_endgame">End game</string>
+    <string name="button_finish">Finish</string>
     <string name="button_discardgame">Discard game</string>
-    <string name="button_finalscores_finish">Finish</string>
-    <string name="button_bonusscoring_finish">Finish</string>
     <string name="label_routescoring_addbutton">Add route score</string>
     <string name="label_routescoring_lengthofroute">Select the length of the route</string>
-
+    <string name="label_routescoring_postgameswitch">Post-game scoring</string>
+    <string name="menuitem_keepopenswitch">Keep keypad open</string>
+        
+    <string name="bonus_longestroute_title">Longest Route</string>
+    <string name="bonus_longestroute_description">To calculate the longest route, find the longest continuous chain of trains of a single player\'s trains. They can cross, but the trains cannot be used more the once in the calculation.</string>
+    <string name="backspace">Backspace</string>
+    <string name="ticket_success">Success</string>
+    <string name="ticket_failed">Failed</string>
 </resources>

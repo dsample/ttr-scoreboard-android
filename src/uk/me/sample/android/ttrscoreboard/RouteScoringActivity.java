@@ -4,20 +4,18 @@ import java.util.ArrayList;
 
 import uk.me.sample.android.ttrscoreboard.objects.Game;
 import uk.me.sample.android.ttrscoreboard.objects.Player;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,26 +23,58 @@ import android.widget.LinearLayout.LayoutParams;
 
 public class RouteScoringActivity extends Activity implements OnClickListener {
 	Game game;
+	Boolean keepKeypadOpen;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		Bundle extras = getIntent().getExtras();
-		game = (Game) extras.getParcelable("game");
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
+
+		Bundle extras = getIntent().getExtras();
+		this.game = (Game) extras.getParcelable("game");
+		keepKeypadOpen = false;
 		
-		setContentView(R.layout.main);
-    	LinearLayout container = (LinearLayout) findViewById(R.id.container);
+		ActionBar actionbar = getActionBar();
+		actionbar.setDisplayHomeAsUpEnabled(false);
+		actionbar.setHomeButtonEnabled(false);
+
+		setContentView(R.layout.routescoring);
+    	LinearLayout container = (LinearLayout) findViewById(R.id.playerContainer);
     	container.removeAllViews();
 		
 		for (int i=0; i < game.playerCount() ;i++) {
 			container.addView(playerView(game.getPlayer(i)));
 		}
+
+		RelativeLayout scoreContainer = (RelativeLayout) findViewById(R.id.scorecontainer);
+		Log.d("FOO", scoreContainer.toString());
+		LinearLayout buttonContainer = (LinearLayout) findViewById(R.id.buttoncontainer);
+		
+		buttonContainer.removeAllViews();
+		Button button;
+		
+		ArrayList<Integer> routeScores = this.game.getBoard().getRouteScores();
+		for (int i=0; i < routeScores.size() ;i++) {
+			Integer routeScore = routeScores.get(i);
+			if (routeScore > 0) {
+				button = new Button(this, null, android.R.attr.buttonStyleSmall);
+				button.setId(R.id.button_routescoring_scorebutton);
+				button.setOnClickListener(this);
+				button.setText(Integer.toString(i+1));
+				//button.setTag(R.id.object_playerid, v.getTag());
+				button.setTag(R.id.object_routelength, i+1);
+				button.setTag(R.id.object_routescore, routeScore);
+				LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+				button.setLayoutParams(layoutParams);
+				buttonContainer.addView(button);
+			}
+		}
+		
+		scoreContainer.setVisibility(RelativeLayout.GONE);
 
 	}
 	
@@ -66,8 +96,8 @@ public class RouteScoringActivity extends Activity implements OnClickListener {
 		thisScore.setText(Integer.toString(player.getTotalScore()));
 		ImageButton addButton = (ImageButton) l.findViewById(R.id.addButton);
 		addButton.setOnClickListener(this);
-		addButton.setTag(player.id);
-		
+		addButton.setTag(R.id.object_playerid, player.id);
+
 /*		
 		int rowHeight = calcDp(48);
 
@@ -120,8 +150,24 @@ public class RouteScoringActivity extends Activity implements OnClickListener {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.actionbar_ticketscoring, menu);
+		menu.clear();
+		MenuItem continueButton = menu.add(1, R.id.button_continue, 1, R.string.button_continue);
+	    continueButton.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS + MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+	    MenuItem keepOpenOption = menu.add(2, R.id.menuitem_keepopenswitch, 2, R.string.menuitem_keepopenswitch);
+	    keepOpenOption.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER + MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+	    keepOpenOption.setCheckable(true);
+	    keepOpenOption.setChecked(this.keepKeypadOpen);
+	    MenuItem discardButton = menu.add(2, R.id.button_discard, 3, R.string.button_discardgame);
+	    discardButton.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER + MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+		return true;
+	}
+
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		Log.d("optionsmenu", "onPrepareOptionsMenu");
+		MenuItem postgameswitch = menu.findItem(R.id.menuitem_keepopenswitch);
+		postgameswitch.setChecked(keepKeypadOpen);
 		return true;
 	}
 
@@ -139,10 +185,25 @@ public class RouteScoringActivity extends Activity implements OnClickListener {
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		Log.d("optionsmenu", "Selected " + item.getTitle());
 		switch (item.getItemId()) {
 			case R.id.button_continue:
 				Intent intent = new Intent(this, TicketScoringActivity.class);
+				intent.putExtra("game", this.game);
 				startActivity(intent);
+				finish();
+				break;
+			case R.id.button_discard:
+				Intent discardIntent = new Intent(this, BoardSelectionActivity.class);
+				startActivity(discardIntent);
+				finish();
+				break;
+			case R.id.menuitem_keepopenswitch:
+				Log.d("optionsmenu", "Post game switch");
+				this.keepKeypadOpen = !item.isChecked();
+				if (!keepKeypadOpen) {
+					findViewById(R.id.scorecontainer).setVisibility(View.GONE);
+				}
 				break;
 		}
 		return true;
@@ -159,50 +220,33 @@ public class RouteScoringActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
+		RelativeLayout scoreContainer = (RelativeLayout) findViewById(R.id.scorecontainer);  
+		LinearLayout buttonContainer = (LinearLayout) findViewById(R.id.buttoncontainer);
+		Player player;
 		switch (v.getId()) {
 			case R.id.addButton:
-				LinearLayout mainContainer = (LinearLayout) findViewById(R.id.container);
-				RelativeLayout panel = (RelativeLayout) findViewById(R.id.routeselector);
-				if (panel != null) {
-					mainContainer.removeView(panel);
+				player = this.game.getPlayerById((Integer) v.getTag(R.id.object_playerid));
+
+				scoreContainer.setVisibility(View.VISIBLE);
+				for (int i=0; i < buttonContainer.getChildCount() ;i++) {
+					Button button = (Button) buttonContainer.getChildAt(i);
+					//button.setBackgroundColor(player.colour);
+					button.getBackground().setColorFilter(player.colour, android.graphics.PorterDuff.Mode.MULTIPLY);
+					button.setTag(R.id.object_playerid, player.id);
 				}
-				
-				LayoutInflater inflater = getLayoutInflater();
-				RelativeLayout l = (RelativeLayout) inflater.inflate(R.layout.routescore_selector, null);
-				RelativeLayout.LayoutParams relParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
-				relParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-				l.setLayoutParams(relParams);
-				LinearLayout container = (LinearLayout) l.findViewById(R.id.buttoncontainer);
-				
-				container.removeAllViews();
-				Button button;
-				
-				ArrayList<Integer> routeScores = this.game.getBoard().getRouteScores();
-				for (int i=0; i < routeScores.size() ;i++) {
-					Integer routeScore = routeScores.get(i);
-					if (routeScore > 0) {
-						button = new Button(this);
-						button.setId(R.id.button_routescoring_scorebutton);
-						button.setText(Integer.toString(i+1));
-						button.setTag(R.id.object_playerid, v.getTag());
-						button.setTag(R.id.object_routelength, i+1);
-						button.setTag(R.id.object_routescore, routeScore);
-						LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-						button.setLayoutParams(layoutParams);
-						container.addView(button);
-					}
-				}
-				
-				mainContainer.addView(l);
 				break;
 			case R.id.button_routescoring_scorebutton:
+				player = this.game.getPlayerById((Integer) v.getTag(R.id.object_playerid));
+				if (!keepKeypadOpen) {
+					scoreContainer.setVisibility(View.GONE);
+				}
 				Log.d("BUTTON", "Score button");
 				Integer RouteScore = (Integer) v.getTag(R.id.object_routescore);
 				Integer RouteLength = (Integer) v.getTag(R.id.object_routelength);
 				
-				Player player = this.game.getPlayerById((Integer) v.getTag(R.id.object_playerid));
-				player.newScore("Route (" + RouteLength + ")", RouteScore);
-				RelativeLayout rel = (RelativeLayout) v.findViewWithTag("Player " + v.getTag(R.id.object_playerid).toString());
+				player.newScore(R.id.score_route, "Route (" + RouteLength + ")", RouteScore);
+				RelativeLayout rel = (RelativeLayout) findViewById(R.id.container).findViewWithTag("Player " + v.getTag(R.id.object_playerid).toString());
+				Log.d("REL", rel.toString());
 				TextView score = (TextView) rel.findViewById(R.id.player_score);
 				score.setText(Integer.toString(player.getTotalScore()));
 				break;
