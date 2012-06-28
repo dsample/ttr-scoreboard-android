@@ -11,6 +11,7 @@
     <item name="state_finalscores" type="id" />
     
     <item name="button_continue" type="id" />
+    <item name="button_finish" type="id" />
     <item name="button_discard" type="id" />
     <item name="button_mainmenu_newgame" type="id" />
     <item name="button_mainmenu_continuegame" type="id" />

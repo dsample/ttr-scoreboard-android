@@ -61,7 +61,6 @@ public class TicketScoringActivity extends Activity implements OnClickListener {
     	//container.removeAllViews();
 	
 		for (int i=0; i < game.playerCount() ;i++) {
-			Log.d("button", "player " + Integer.toString(i));
 			container.addView(playerView(game.getPlayer(i)));
 		}
 		

@@ -2,6 +2,8 @@ package uk.me.sample.android.ttrscoreboard.objects;
 
 import java.util.ArrayList;
 
+import uk.me.sample.android.ttrscoreboard.BonusScoringActivity;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -61,6 +63,14 @@ public class Game implements Parcelable {
 		if (position > -1) {
 			players.remove(position);
 		}
+	}
+	
+	public BoardBonus getBonus(int bonusId) {
+		return this.board.getBonus(bonusId);
+	}
+	
+	public ArrayList<BoardBonus> getBonuses() {
+		return this.board.getBonuses();
 	}
 	
 	/**

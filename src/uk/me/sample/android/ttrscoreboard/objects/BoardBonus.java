@@ -4,32 +4,59 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class BoardBonus {
-	private String name;
-	private int numberOfWinners;
+	private int id;
+	private int name;
+	private int description;
+	private int maxNumberOfWinners;
 
 	private int possibleBonusesPerWinner;
 	private ArrayList<Integer> scoresPerTicket = new ArrayList<Integer>();
 
-	public BoardBonus(String name) {
+	public BoardBonus(int id, int name) {
+		this.id = id;
 		this.name = name;
-		this.setNumberOfWinners(1);
+		this.setMaxNumberOfWinners(1);
 		this.possibleBonusesPerWinner = 1;
 	}
-
-	public int getNumberOfWinners() {
-		return numberOfWinners;
+	
+	public BoardBonus(int id, int name, int maxNumberOfWinners, int possibleBonusesPerWinner, Integer[] scoresPerTicket) {
+		this.id = id;
+		this.name = name;
+		this.maxNumberOfWinners = maxNumberOfWinners;
+		this.possibleBonusesPerWinner = possibleBonusesPerWinner;
+		this.setScoresPerTicket(scoresPerTicket);
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public void setNumberOfWinners(int numberOfWinners) {
-		this.numberOfWinners = numberOfWinners;
+	public int getMaxNumberOfWinners() {
+		return maxNumberOfWinners;
 	}
 
-	public String getName() {
+	public void setMaxNumberOfWinners(int numberOfWinners) {
+		this.maxNumberOfWinners = numberOfWinners;
+	}
+
+	public int getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(int stringRes) {
+		this.name = stringRes;
+	}
+	
+	public int getDescription() {
+		return description;
+	}
+
+	public void setDescription(int stringRes) {
+		this.description = stringRes;
 	}
 
 	public int getPossibleBonusesPerWinner() {
@@ -67,11 +94,6 @@ public class BoardBonus {
 		}
 		
 		return score;
-	}
-
-	@Override
-	public String toString() {
-		return name;
 	}
 
 }
