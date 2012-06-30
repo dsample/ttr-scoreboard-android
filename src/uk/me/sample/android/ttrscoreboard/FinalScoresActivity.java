@@ -2,6 +2,7 @@ package uk.me.sample.android.ttrscoreboard;
 
 import uk.me.sample.android.ttrscoreboard.objects.Game;
 import uk.me.sample.android.ttrscoreboard.objects.Player;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -61,6 +62,7 @@ public class FinalScoresActivity extends Activity {
 		return l;
 	}
 	
+	@SuppressLint("AlwaysShowAction")
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.clear();

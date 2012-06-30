@@ -11,7 +11,7 @@
         android:layout_alignParentLeft="true" />
 
     <Spinner android:id="@+id/count"
-        android:layout_toRightOf="@+id/minusButton"
+        android:layout_toRightOf="@+id/colour"
 	    android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="wrap_content"
         android:layout_height="48dp"

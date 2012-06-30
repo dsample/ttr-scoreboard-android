@@ -2,6 +2,7 @@ package uk.me.sample.android.ttrscoreboard;
 
 import uk.me.sample.android.ttrscoreboard.objects.Game;
 import uk.me.sample.android.ttrscoreboard.objects.Player;
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
@@ -103,6 +104,7 @@ public class TicketScoringActivity extends Activity implements OnClickListener {
 		return l;
 	}
 	
+	@SuppressLint("AlwaysShowAction")
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.clear();
@@ -139,6 +141,7 @@ public class TicketScoringActivity extends Activity implements OnClickListener {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case R.id.button_continue:
+				//Intent intent = new Intent(this, BonusScoringActivity.class);
 				Intent intent = new Intent(this, BonusScoringActivity.class);
 				intent.putExtra("game", this.game);
 				startActivity(intent);
