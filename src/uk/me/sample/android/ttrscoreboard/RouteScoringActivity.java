@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import uk.me.sample.android.ttrscoreboard.objects.Game;
 import uk.me.sample.android.ttrscoreboard.objects.Player;
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
@@ -148,6 +149,7 @@ public class RouteScoringActivity extends Activity implements OnClickListener {
 		return l;
 	}
 
+	@SuppressLint("AlwaysShowAction")
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.clear();

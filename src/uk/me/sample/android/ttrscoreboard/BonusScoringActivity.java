@@ -3,12 +3,11 @@ package uk.me.sample.android.ttrscoreboard;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.ReasonPhraseCatalog;
-
 import uk.me.sample.android.ttrscoreboard.objects.BoardBonus;
 import uk.me.sample.android.ttrscoreboard.objects.Game;
 import uk.me.sample.android.ttrscoreboard.objects.Player;
 import uk.me.sample.android.ttrscoreboard.objects.Score;
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
@@ -242,6 +241,7 @@ public class BonusScoringActivity extends Activity implements OnCheckedChangeLis
 		return true;
 	}
 
+	@SuppressLint({ "AlwaysShowAction" })
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		menu.clear();
@@ -390,7 +390,7 @@ public class BonusScoringActivity extends Activity implements OnCheckedChangeLis
 		
 		LinearLayout l = (LinearLayout) findViewById(R.id.playerContainer);
 		RelativeLayout rel;
-		Integer playerId = (Integer) buttonView.getTag(R.id.object_playerid);
+		//Integer playerId = (Integer) buttonView.getTag(R.id.object_playerid);
 		BoardBonus bonus = bonuses.get(currentBonusIndex);
 		
 		switch (buttonView.getId()) {

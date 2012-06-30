@@ -7,28 +7,29 @@
         android:id="@+id/colour"
         android:layout_width="3dp"
         android:layout_height="match_parent"
-        android:background="?android:attr/dividerVertical"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentLeft="true"
+        android:background="?android:attr/dividerVertical" />
 
-    <CheckBox android:id="@+id/checkbox"
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_toRightOf="@+id/colour"
-	    android:textAppearance="?android:attr/textAppearanceMedium"
-	    android:text="Test"
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	    android:gravity="center_vertical"
-	    android:src="@drawable/content_new" />
-    	
-	<TextView
-	    android:id="@+id/player_score"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_gravity="center_vertical"
-	    android:layout_centerVertical="true"
-	    android:layout_marginRight="16dp"
-	    android:layout_alignParentRight="true"
-	    android:text="0"
-	    android:textColor="?android:attr/textColorSecondaryInverse"
-	    android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:gravity="center_vertical"
+        android:src="@drawable/content_new"
+        android:text="Test"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/player_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="16dp"
+        android:text="0"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="?android:attr/textColorSecondaryInverse" />
 
 </RelativeLayout>

@@ -79,7 +79,7 @@ public class Player implements Parcelable {
 	}
 
 	public void updateScore(int reasonId, int reasonData, int score) {
-		for (int i=scores.size(); i >= 0 ;i++) {
+		for (int i=scores.size(); i >= 0 ;i--) {
 			Score thisScore = getScore(reasonId);
 			if (thisScore != null) {
 				removeScore(thisScore.reasonId);

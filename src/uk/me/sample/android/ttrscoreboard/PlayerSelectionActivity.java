@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import uk.me.sample.android.ttrscoreboard.objects.Game;
 import uk.me.sample.android.ttrscoreboard.objects.Player;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -76,6 +77,7 @@ public class PlayerSelectionActivity extends Activity implements OnCheckedChange
 		return l;
 	}
 	
+	@SuppressLint("AlwaysShowAction")
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuItem continueButton = menu.add(1, R.id.button_continue, 1, R.string.button_continue);

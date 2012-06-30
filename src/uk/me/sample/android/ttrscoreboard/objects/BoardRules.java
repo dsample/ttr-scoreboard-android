@@ -137,7 +137,7 @@ public class BoardRules {
 
     	BoardBonus bonus = new BoardBonus(R.id.score_bonus_longestroute, R.string.bonus_longestroute_title);
     	bonus.setDescription(R.string.bonus_longestroute_description);
-    	bonus.setMaxNumberOfWinners(1);
+    	bonus.setMaxNumberOfWinners(5);
     	bonus.setPossibleBonusesPerWinner(1);
     	Integer[] bonusScores = { 10 };
     	bonus.setScoresPerTicket(bonusScores);
