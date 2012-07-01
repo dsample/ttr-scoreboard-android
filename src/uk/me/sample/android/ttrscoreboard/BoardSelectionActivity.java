@@ -69,7 +69,8 @@ public class BoardSelectionActivity extends Activity implements OnClickListener 
     		l.addView(b);
     	}
     	
-    	boolean expansionDividerAdded = false;
+    	// TODO Add a horizontal divider and help text before the global extensions
+    	//boolean expansionDividerAdded = false;
 
     	for (int k=0; k < expansions.size() ;k++) {
     		Expansion exp = expansions.get(k);
