@@ -8,7 +8,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CheckBox;
@@ -142,7 +141,6 @@ public class PlayerSelectionActivity extends Activity implements OnCheckedChange
 	 * @return
 	 */
 	private int calcDp(int pixels) {
-		Log.d("TTR", "calcDp beginning");
 		return (int) (getResources().getDisplayMetrics().density * pixels + 0.5f);
 	}
 }

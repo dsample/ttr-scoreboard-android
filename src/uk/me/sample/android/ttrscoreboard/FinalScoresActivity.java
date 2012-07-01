@@ -6,7 +6,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,7 +36,6 @@ public class FinalScoresActivity extends Activity {
     	container.removeAllViews();
 	
 		for (int i=0; i < game.playerCount() ;i++) {
-			Log.d("button", "player " + Integer.toString(i));
 			container.addView(playerView(game.getPlayer(i)));
 		}
 	}
@@ -101,7 +99,6 @@ public class FinalScoresActivity extends Activity {
 	 * @return
 	 */
 	private int calcDp(int pixels) {
-		Log.d("TTR", "calcDp beginning");
 		return (int) (getResources().getDisplayMetrics().density * pixels + 0.5f);
 	}
 
