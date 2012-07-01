@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <item name="player_selection_checkbox" type="id" />
     <item name="player_selection_continuebutton" type="id" />
     
@@ -9,6 +9,20 @@
     <item name="state_routescoring" type="id" />
     <item name="state_bonusscoring" type="id" />
     <item name="state_finalscores" type="id" />
+    
+    <item name="board_europe" type="id" />
+    <item name="board_usa" type="id" />
+    <item name="board_nordic" type="id" />
+    <item name="board_switzerland" type="id" />
+    <item name="board_india" type="id" />
+    <item name="board_asia" type="id" />
+    <item name="board_legendary_asia" type="id" />
+    <item name="board_marklin" type="id" />
+    
+    <item name="expansion_europa1912" type="id" />
+    <item name="expansion_usa1910" type="id" />
+    <item name="expansion_alvinanddexter" type="id" />
+    <item name="expansion_" type="id" />
     
     <item name="button_continue" type="id" />
     <item name="button_finish" type="id" />
@@ -29,7 +43,16 @@
     <item name="object_routelength" type="id" />
     <item name="object_playerid" type="id" />
     
+    <item name="expansion_id" type="id" />
+    <item name="expansion_parent_id" type="id" />
+    
     <item name="score_route" type="id" />
     <item name="score_ticket" type="id" />
     <item name="score_bonus_longestroute" type="id" />
+    <item name="score_bonus_globetrotter" type="id" />
+    <item name="score_bonus_stations" type="id" />
+    <item name="score_bonus_mandala" type="id" />
+    <item name="score_bonus_alvin" type="id" />
+    <item name="score_bonus_dexter" type="id" />
+    <item name="score_bonus_unuseddepots" type="id" />
 </resources>

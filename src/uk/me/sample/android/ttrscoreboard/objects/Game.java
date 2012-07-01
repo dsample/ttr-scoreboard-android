@@ -9,9 +9,11 @@ import android.os.Parcelable;
 public class Game implements Parcelable {
 	private BoardRules board;
 	private ArrayList<Player> players;
+	private ArrayList<Expansion> expansions;
 	
 	public Game() {
 		this.players = new ArrayList<Player>();
+		this.expansions = new ArrayList<Expansion>();
 	}
 	
 	public Game(BoardRules board) {
@@ -63,6 +65,24 @@ public class Game implements Parcelable {
 		}
 	}
 	
+	public ArrayList<Expansion> getExpansions() {
+		return this.expansions;
+	}
+	
+	public Expansion getExpansion(int expansionId) {
+		for (int i=0; i < expansions.size() ;i++) {
+			if (expansions.get(i).id == expansionId) {
+				return expansions.get(i);
+			}
+		}
+		return null;
+	}
+	
+	public void addExpansion(Expansion expansion) {
+		this.expansions.add(expansion);
+	}
+	
+	
 	public BoardBonus getBonus(int bonusId) {
 		return this.board.getBonus(bonusId);
 	}
@@ -106,13 +126,22 @@ public class Game implements Parcelable {
 	public void writeToParcel(Parcel dest, int flags) {
 		dest.writeInt(board.getId());
 		dest.writeTypedList(players);
+		dest.writeTypedList(expansions);
 	}
 	
 	public Game(Parcel in) {
 		this.players = new ArrayList<Player>();
+		this.expansions = new ArrayList<Expansion>();
 
-		board = BoardRules.getBoard(in.readInt());
+		this.board = BoardRules.getBoard(in.readInt());
 		in.readTypedList(players, Player.CREATOR);
+		in.readTypedList(expansions, Expansion.CREATOR);
+		
+		for (int i=0; i < expansions.size() ;i++) {
+			Expansion expansion = expansions.get(i);
+			this.board.removeBonuses(expansion.removeBonuses);
+			this.board.addBonuses(expansion.newBonuses);
+		}
 	}
 	
 	public static final Parcelable.Creator<Game> CREATOR = new Parcelable.Creator<Game>() {

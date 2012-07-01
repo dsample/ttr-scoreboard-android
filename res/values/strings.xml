@@ -12,26 +12,59 @@
         
     <string name="newgame">New game</string>
     <string name="continuegame">Continue game</string>
+
     <string name="map_usa">USA</string>
     <string name="map_europe">Europe</string>
     <string name="map_switzerland">Switzerland</string>
+    <string name="map_marklin">Märklin</string>
+    <string name="map_india">India</string>
+    <string name="map_asia">Asia</string>
+    <string name="map_legendary_asia">Legendary Asia</string>
+    <string name="map_nordic">Nordic Countries</string>
+    
+    <string name="expansion_alvinanddexter">Alvin &amp; Dexter</string>
+    <string name="expansion_europa1912">Europa 1912</string>
+    <string name="expansion_usa1910">USA 1910</string>
+    <string name="expansion_warehousesanddepots">Warehouses &amp; Depots</string>
     
     <string name="colour_red">Red</string>
     <string name="colour_blue">Blue</string>
     <string name="colour_green">Green</string>
     <string name="colour_yellow">Yellow</string>
     <string name="colour_black">Black</string>
-        
+    <string name="colour_white">White</string>
+    <string name="colour_purple">Purple</string>
+    
     <string name="button_continue">Continue</string>
     <string name="button_finish">Finish</string>
     <string name="button_discardgame">Discard game</string>
     <string name="label_routescoring_addbutton">Add route score</string>
     <string name="label_routescoring_lengthofroute">Select the length of the route</string>
-    <string name="label_routescoring_postgameswitch">Post-game scoring</string>
     <string name="menuitem_keepopenswitch">Keep keypad open</string>
     
     <string name="bonus_longestroute_title">Longest Route</string>
-    <string name="bonus_longestroute_description">To calculate the longest route, find the longest continuous chain of trains of a single player\'s trains. They can cross, but the trains cannot be used more the once in the calculation.</string>
+    <string name="bonus_longestroute_description">To calculate the longest route bonus, find the longest continuous chain of trains of a single player\'s trains. They can cross, but the trains cannot be used more the once. If there is a tie, all tied players get the bonus.</string>
+    <string name="bonus_stations_title">Unused Stations</string>
+    <string name="bonus_stations_description">Enter the number of unused stations for each player.</string>
+    <string name="bonus_globetrotter_title">Globetrotter</string>
+    <string name="bonus_globetrotter_description">The player with the most successful destination tickets gets this bonus. If there is a tie, all tied players get the bonus.</string>
+    <string name="bonus_mostcompletedtickets_title">Most Completed Tickets</string>
+    <string name="bonus_mostcompletedtickets_description">The player with the most successful destination tickets gets this bonus. If there is a tie, all tied players get the bonus.</string>
+    <string name="bonus_indiaexpress_title">India Express</string>
+    <string name="bonus_indiaexpress_description">To calculate the India Express ticket bonus, find the longest continuous chain of trains of a single player\'s trains. They can cross, but the trains cannot be used more the once. If there is a tie, all tied players get the bonus.</string>
+    <string name="bonus_mandala_title">Grand Tour of India</string>
+    <string name="bonus_mandala_description">Each player may also earn Grand Tour of India bonuses. Any Ticket whose 2 Destination Cities are linked via at least 2 distinct continuous paths of its owner\'s plastic trains qualifies for a Grand Tour bonus. These 2 paths may intersect, but cannot share trains.
+        
+        Enter the number of qualifying tickets using the above criteria, up to a maximum of 5 tickets.</string>
+    <string name="bonus_alvin_title">Alvin</string>
+    <string name="bonus_alvin_description">The player with the most Alvin cards. If there is a tie, all tied players get the bonus.</string>
+    <string name="bonus_dexter_title">Dexter</string>
+    <string name="bonus_dexter_description">The player with the most Dexter cards. If there is a tie, all tied players get the bonus.</string>
+    <string name="bonus_unuseddepots_title">Unused Depots</string>
+    <string name="bonus_unuseddepots_description">The player with the most unused depots. If there is a tie, all tied players get the bonus.</string>
+    
+    <string name="daysofwonder_trademarks">“Days of Wonder” , “Ticket to Ride” , “Ticket to Ride - Europe” , “Ticket to Ride - Switzerland” , “Ticket to Ride - India” , “Ticket to Ride - Alvin &amp; Dexter”  and “Ticket to Ride - USA 1910” are trademarks or registered trademarks of Days of Wonder, Inc. All Rights Reserved.</string>
+        
     <string name="backspace">Backspace</string>
     <string name="ticket_success">Success</string>
     <string name="ticket_failed">Failed</string>

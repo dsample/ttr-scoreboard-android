@@ -47,8 +47,10 @@ public class BonusScoringActivity extends Activity implements OnCheckedChangeLis
 		actionbar.setHomeButtonEnabled(true);
 
 		this.game = (Game) getIntent().getParcelableExtra("game");
-
-		currentBonusIndex = 0;
+//		if (getIntent().getBooleanExtra("BackButton", false)) {
+//		} else {
+			currentBonusIndex = 0;
+//		}
 
 //		Bundle extras = getIntent().getExtras();
 //		game = (Game) extras.getParcelable("game");
@@ -112,8 +114,8 @@ public class BonusScoringActivity extends Activity implements OnCheckedChangeLis
 			radiobutton.setText(player.name);
 			radiobutton.setTag(R.id.object_playerid, player.id);
 			//radiobutton.setOnCheckedChangeListener(this);
-			radiobutton.setOnClickListener(this);
 			radiobutton.setChecked(playerBonusState(player, bonus) == 1);
+			radiobutton.setOnClickListener(this);
 		} else if (bonus.getMaxNumberOfWinners() > 1 && bonus.getPossibleBonusesPerWinner() == 1) {
 			// If multiple winners but only 1 per winner then checkbox layout
 			l = (RelativeLayout) inflater.inflate(R.layout.bonusscoring_player_checkbox, null);
@@ -121,8 +123,8 @@ public class BonusScoringActivity extends Activity implements OnCheckedChangeLis
 			CheckBox checkbox = (CheckBox) l.findViewById(R.id.checkbox);
 			checkbox.setText(player.name);
 			checkbox.setTag(R.id.object_playerid, player.id);
-			checkbox.setOnCheckedChangeListener(this);
 			checkbox.setChecked(playerBonusState(player, bonus) == 1);
+			checkbox.setOnCheckedChangeListener(this);
 		} else {
 			// If multiple winners and multiple per winner then spinner layout
 			l = (RelativeLayout) inflater.inflate(R.layout.bonusscoring_player_plusminus, null);
@@ -137,9 +139,8 @@ public class BonusScoringActivity extends Activity implements OnCheckedChangeLis
 			ArrayAdapter<CharSequence> spinnerAdapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item, spinnerValues);
 			spinner.setAdapter(spinnerAdapter);
 			spinner.setTag(R.id.object_playerid, player.id);			
-			spinner.setOnItemSelectedListener(this);
 			spinner.setSelection(playerBonusState(player, bonus));
-
+			spinner.setOnItemSelectedListener(this);
 		}
 
 		l.setTag("Player " + Integer.toString(player.id));
@@ -155,8 +156,13 @@ public class BonusScoringActivity extends Activity implements OnCheckedChangeLis
 		return l;
 	}
 
+	// Find out if the checkbox should be checked when reloading a bonus
 	private int playerBonusState(Player player, BoardBonus bonus) {
 		Score score = player.getScore(bonus.getId());
+
+		if (score != null) {
+			Log.d("bonusDetails", Integer.toString(score.reasonId) + " : " + Integer.toString(score.score));
+		}
 		
 		if (score != null) {
 			if (bonus.getMaxNumberOfWinners() == 1) {
@@ -276,7 +282,7 @@ public class BonusScoringActivity extends Activity implements OnCheckedChangeLis
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Intent intent;
 		
-		if (item.getItemId() == R.id.button_continue || item.getItemId() == R.id.button_finish) {
+		if (item.getItemId() == R.id.button_continue || item.getItemId() == R.id.button_finish || item.getItemId() == android.R.id.home) {
 			LinearLayout l = (LinearLayout) findViewById(R.id.playerContainer);
 			for (int i=0; i < game.playerCount() ;i++) {
 				Player player = game.getPlayer(i);
@@ -306,8 +312,8 @@ public class BonusScoringActivity extends Activity implements OnCheckedChangeLis
 					if (selected > 0) {
 						int thisScore = 0;
 						ArrayList<Integer> scoresPerTicket = bonus.getScoresPerTicket();
-						for (i=0; i < selected ;i++) {
-							thisScore = thisScore + scoresPerTicket.get(i);
+						for (int j=0; j < selected ;j++) {
+							thisScore = thisScore + scoresPerTicket.get(j);
 						}
 						player.updateScore(bonus.getId(), selected, thisScore);
 					} else {
@@ -322,10 +328,9 @@ public class BonusScoringActivity extends Activity implements OnCheckedChangeLis
 				currentBonusIndex++;
 				BoardBonus currentBonusForward = bonuses.get(currentBonusIndex);
 				createBonusScreen(currentBonusForward.getId());
+				invalidateOptionsMenu();
 				break;
 			case R.id.button_finish:
-				addScore();
-				
 				intent = new Intent(this, FinalScoresActivity.class);
 				intent.putExtra("game", this.game);
 				startActivity(intent);
@@ -338,6 +343,7 @@ public class BonusScoringActivity extends Activity implements OnCheckedChangeLis
 				break;
 			case android.R.id.home:
 				if (currentBonusIndex == 0) {
+					
 					intent = new Intent(this, TicketScoringActivity.class);
 					intent.putExtra("game", this.game);
 					startActivity(intent);
@@ -346,15 +352,11 @@ public class BonusScoringActivity extends Activity implements OnCheckedChangeLis
 					currentBonusIndex--;
 					BoardBonus currentBonusBack = bonuses.get(currentBonusIndex);
 					createBonusScreen(currentBonusBack.getId());
+					invalidateOptionsMenu();
 				}
 				break;
 		}
 		return true;
-	}
-
-	private void addScore() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

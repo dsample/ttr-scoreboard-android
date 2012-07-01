@@ -3,27 +3,29 @@ package uk.me.sample.android.ttrscoreboard;
 import java.util.ArrayList;
 
 import uk.me.sample.android.ttrscoreboard.objects.BoardRules;
+import uk.me.sample.android.ttrscoreboard.objects.Expansion;
 import uk.me.sample.android.ttrscoreboard.objects.Game;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 
 public class BoardSelectionActivity extends Activity implements OnClickListener {
 	Game game;
 
 	ArrayList<BoardRules> boards;
+	ArrayList<Expansion> expansions;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		this.boards = BoardRules.knownBoards();
+		this.expansions = BoardRules.knownExpansions();
 		super.onCreate(savedInstanceState);
 
 		game = new Game();
@@ -35,7 +37,6 @@ public class BoardSelectionActivity extends Activity implements OnClickListener 
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
 		super.onResume();
 		
 		setContentView(R.layout.main);
@@ -49,7 +50,40 @@ public class BoardSelectionActivity extends Activity implements OnClickListener 
     		b.setTag(board);
     		b.setId(R.id.button_boardselection);
     		b.setOnClickListener(this);
+    		
+    		for (int j=0; j < expansions.size() ;j++) {
+    			Expansion expansion = expansions.get(j);
+    			Log.d("parentId", Integer.toString(expansion.parentBoardId) + " : " + Integer.toString(board.getId()));
+    			if (expansion.parentBoardId == board.getId()) {
+        			Log.d("parentId", Integer.toString(expansion.parentBoardId) + " : " + Integer.toString(board.getId()) + " MATCHED");
+        			CheckBox checkbox = new CheckBox(this);
+        			checkbox.setText(expansion.name);
+        			checkbox.setTag("Expansion " + Integer.toString(expansion.id));
+        			checkbox.setTag(R.id.expansion_id, expansion.id);
+        			checkbox.setTag(R.id.expansion_parent_id, expansion.parentBoardId);
+    				
+    				l.addView(checkbox);
+    			}
+    		}
+    		
     		l.addView(b);
+    	}
+    	
+    	boolean expansionDividerAdded = false;
+
+    	for (int k=0; k < expansions.size() ;k++) {
+    		Expansion exp = expansions.get(k);
+    		if (exp.parentBoardId == 0) {
+//    			if (! expansionDividerAdded) {}
+
+    			CheckBox cbox = new CheckBox(this);
+    			cbox.setText(exp.name);
+    			cbox.setTag("Expansion " + Integer.toString(exp.id));
+    			cbox.setTag(R.id.expansion_id, exp.id);
+    			cbox.setTag(R.id.expansion_parent_id, exp.parentBoardId);
+    			
+    			l.addView(cbox);
+    		}
     	}
 
 	}
@@ -70,7 +104,24 @@ public class BoardSelectionActivity extends Activity implements OnClickListener 
 	public void onClick(View v) {
 		switch (v.getId()) {
 			case R.id.button_boardselection:
-				this.game.setBoard((BoardRules) v.getTag());
+				BoardRules board = (BoardRules) v.getTag();
+				
+				LinearLayout container = (LinearLayout) findViewById(R.id.container);
+				
+				for (int i=0; i < expansions.size() ;i++) {
+					Expansion expansion = expansions.get(i);
+					CheckBox checkbox = (CheckBox) container.findViewWithTag("Expansion " + expansion.id);
+					
+					if (checkbox.isChecked() && (expansion.parentBoardId == 0 || expansion.parentBoardId == board.getId())) {
+						game.addExpansion(expansion);
+						// Remove bonuses
+						board.removeBonuses(expansion.removeBonuses);
+						// Add new bonuses
+						board.addBonuses(expansion.newBonuses);
+					}
+				}
+				
+				this.game.setBoard(board);
 				Intent intent = new Intent(this, PlayerSelectionActivity.class);
 				intent.putExtra("game", this.game);
 				startActivity(intent);
