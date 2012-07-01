@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Menolippu</string>
+
+    <string name="title_boardselection">Valitse pelilauta</string>
+    <string name="title_playerselection">Valitse pelaajat</string>
+    <string name="title_routescoring">Reittien pistemäärät</string>
+    <string name="title_ticketscoring">Menolippujen pistemäärät</string>
+	<string name="title_bonusscoring">Bonuksien pistemäärät</string>
+	<string name="title_finalscores">Lopulliset pistemäärät</string>
+        
+    <string name="newgame">Uusi peli</string>
+    <string name="continuegame">Jatka peliä</string>
+
+    <string name="map_usa">Yhdysvallat</string>
+    <string name="map_europe">Eurooppa</string>
+    <string name="map_switzerland">Sveitsi</string>
+    <string name="map_marklin">Märklin</string>
+    <string name="map_india">Intia</string>
+    <string name="map_asia">Aasia</string>
+    <string name="map_legendary_asia">Legendojen Aasia</string>
+    <string name="map_nordic">Pohjoismaat</string>
+    
+    <string name="expansion_alvinanddexter">Alvin &amp; Dexter</string>
+    <string name="expansion_europa1912">Eurooppa 1912</string>
+    <string name="expansion_usa1910">Yhdysvallat 1910</string>
+    <string name="expansion_warehousesanddepots">Varastot ja varikot</string>
+    
+    <string name="colour_red">Punainen</string>
+    <string name="colour_blue">Sininen</string>
+    <string name="colour_green">Vihreä</string>
+    <string name="colour_yellow">Keltainen</string>
+    <string name="colour_black">Musta</string>
+    <string name="colour_white">Valkoinen</string>
+    <string name="colour_purple">Violetti</string>
+    
+    <string name="button_continue">Jatka</string>
+    <string name="button_finish">Valmis</string>
+    <string name="button_discardgame">Hylkää peli</string>
+    <string name="label_routescoring_addbutton">Lisää reitin pistemäärä</string>
+    <string name="label_routescoring_lengthofroute">Valitse reitin pituus</string>
+    <string name="menuitem_keepopenswitch">Jätä numeronäppäimistö näkyviin</string>
+    
+    <string name="bonus_longestroute_title">Pisin reitti</string>
+    <string name="bonus_longestroute_description">Pisin reitti-bonuksen laskemiseksi tarvitsee löytää pisin yhtämittainen ketju yhden pelaajan junavaunuja. Nämä reitit voivat risteytyä, mutta ne eivät saa käyttää yhtäkään samaa reittiä. Tasatilanteessa kaikki tasoissa olevat saavat bonuksen.</string>
+    <string name="bonus_stations_title">Käyttämättömät asemat</string>
+    <string name="bonus_stations_description">Anna käyttämättömien asemien lukumäärä</string>
+    <string name="bonus_globetrotter_title">Eniten tehtyjä menolippuja</string>
+    <string name="bonus_globetrotter_description">Pelaaja jolla on eniten tehtyjä menolippuja saa tämän bonuksen. Tasatilanteessa kaikki tasoissa olevat saavat bonuksen.</string>
+    <string name="bonus_mostcompletedtickets_title">Eniten tehtyjä menolippuja</string>
+    <string name="bonus_mostcompletedtickets_description">Pelaaja jolla on eniten tehtyjä menolippuja saa tämän bonuksen. Tasatilanteessa kaikki tasoissa olevat saavat bonuksen.</string>
+    <string name="bonus_indiaexpress_title">Pisin reitti</string>
+    <string name="bonus_indiaexpress_description">Pisin reitti-bonuksen laskemiseksi tarvitsee löytää pisin yhtämittainen ketju yhden pelaajan junavaunuja. Nämä reitit voivat risteytyä, mutta ne eivät saa käyttää yhtäkään samaa reittiä. Tasatilanteessa kaikki tasoissa olevat saavat bonuksen.</string>
+    <string name="bonus_mandala_title">Intian matkabonus</string>
+    <string name="bonus_mandala_description">Kukin pelaaja voi myös saada Intian matkabonuksen. Tämän bonuksen saa, mikäli pelaaja pystyy rakentamaan hallussaan olevan menolipun käyttäen kahta eri reittiä. Nämä reitit voivat risteytyä, mutta ne eivät saa käyttää yhtäkään samaa reittiä.
+        
+        Anna enintään viiden lipun, jotka täyttävät ylläolevat ehdot, lukumärä.</string>
+    <string name="bonus_alvin_title">Alvin</string>
+    <string name="bonus_alvin_description">Pelaaja, jolla on eniten Alvin-kortteja. Tasatilanteessa kaikki tasoissa olevat saavat bonuksen.</string>
+    <string name="bonus_dexter_title">Dexter</string>
+    <string name="bonus_dexter_description">Pelaaja, jolla on eniten Dexter-kortteja. Tasatilanteessa kaikki tasoissa olevat saavat bonuksen.</string>
+    <string name="bonus_unuseddepots_title">Käyttämättömät varikot</string>
+    <string name="bonus_unuseddepots_description">Pelaaja, jolla on eniten käyttämättömiä varikoita. Tasatilanteessa kaikki tasoissa olevat saavat bonuksen.</string>
+    
+    <string name="daysofwonder_trademarks">“Days of Wonder” , “Ticket to Ride” , “Ticket to Ride - Europe” , “Ticket to Ride - Switzerland” , “Ticket to Ride - India” , “Ticket to Ride - Alvin &amp; Dexter”  and “Ticket to Ride - USA 1910” are trademarks or registered trademarks of Days of Wonder, Inc. All Rights Reserved.</string>
+        
+    <string name="backspace">Askelpalautin</string>
+    <string name="ticket_success">Onnistui</string>
+    <string name="ticket_failed">Epäonnistui</string>
+</resources>
