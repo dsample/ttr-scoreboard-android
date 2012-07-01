@@ -34,10 +34,7 @@ public class Player implements Parcelable {
 		}
 		return score;
 	}
-	
-	public void newScore(int reasonId, String reason, int score) {
-		scores.add(new Score(reasonId, reason, score));
-	}
+
 	public void newScore(int reasonId, int reasonData, int score) {
 		scores.add(new Score(reasonId, reasonData, score));
 	}
@@ -106,6 +103,8 @@ public class Player implements Parcelable {
 	public static final int PLAYER_YELLOW = 3;
 	public static final int PLAYER_GREEN = 4;
 	public static final int PLAYER_BLACK = 5;
+	public static final int PLAYER_WHITE = 6;
+	public static final int PLAYER_PURPLE = 7;
 
 	// PARCELABLE
 	

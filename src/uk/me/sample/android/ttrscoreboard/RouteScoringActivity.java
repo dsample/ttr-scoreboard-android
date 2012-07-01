@@ -246,7 +246,7 @@ public class RouteScoringActivity extends Activity implements OnClickListener {
 				Integer RouteScore = (Integer) v.getTag(R.id.object_routescore);
 				Integer RouteLength = (Integer) v.getTag(R.id.object_routelength);
 				
-				player.newScore(R.id.score_route, "Route (" + RouteLength + ")", RouteScore);
+				player.newScore(R.id.score_route, RouteLength, RouteScore);
 				RelativeLayout rel = (RelativeLayout) findViewById(R.id.container).findViewWithTag("Player " + v.getTag(R.id.object_playerid).toString());
 				Log.d("REL", rel.toString());
 				TextView score = (TextView) rel.findViewById(R.id.player_score);

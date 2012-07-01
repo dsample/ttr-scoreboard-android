@@ -7,7 +7,6 @@ import uk.me.sample.android.ttrscoreboard.objects.Game;
 import uk.me.sample.android.ttrscoreboard.objects.Player;
 
 import android.app.Activity;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;

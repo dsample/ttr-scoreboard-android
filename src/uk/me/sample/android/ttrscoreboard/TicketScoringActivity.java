@@ -161,7 +161,7 @@ public class TicketScoringActivity extends Activity implements OnClickListener {
 			case R.id.menuitem_keepopenswitch:
 				this.keepKeypadOpen = !item.isChecked();
 				if (!keepKeypadOpen) {
-					findViewById(R.id.scorecontainer).setVisibility(View.GONE);
+					findViewById(R.id.keypad).setVisibility(View.GONE);
 				}
 				break;
 		}
@@ -198,18 +198,6 @@ public class TicketScoringActivity extends Activity implements OnClickListener {
 				button.getBackground().setColorFilter(player.colour, android.graphics.PorterDuff.Mode.MULTIPLY);
 				button.setTag(R.id.object_playerid, player.id);
 				break;
-			case R.id.button_routescoring_scorebutton:
-				player = this.game.getPlayerById((Integer) v.getTag(R.id.object_playerid));
-				Log.d("BUTTON", "Score button");
-				Integer RouteScore = (Integer) v.getTag(R.id.object_routescore);
-				Integer RouteLength = (Integer) v.getTag(R.id.object_routelength);
-				
-				player.newScore(R.id.score_route, "Route (" + RouteLength + ")", RouteScore);
-				RelativeLayout rel = (RelativeLayout) findViewById(R.id.container).findViewWithTag("Player " + v.getTag(R.id.object_playerid).toString());
-				Log.d("REL", rel.toString());
-				TextView score = (TextView) rel.findViewById(R.id.player_score);
-				score.setText(Integer.toString(player.getTotalScore()));
-				break;
 			case R.id.backspace:
 				TextView scoreEntry1 = (TextView) findViewById(R.id.scoreEntry);
 				String string = scoreEntry1.getText().toString();
@@ -235,7 +223,7 @@ public class TicketScoringActivity extends Activity implements OnClickListener {
 				if (successScoreEntry.length() > 0) {
 					player = this.game.getPlayerById((Integer) v.getTag(R.id.object_playerid));
 					
-					player.newScore(R.id.score_route, "Successful ticket", Integer.parseInt(successScoreEntry.getText().toString()));
+					player.newScore(R.id.score_route, 0, Integer.parseInt(successScoreEntry.getText().toString()));
 					RelativeLayout successRel = (RelativeLayout) findViewById(R.id.playerContainer).findViewWithTag("Player " + v.getTag(R.id.object_playerid).toString());
 					Log.d("REL", successRel.toString());
 					TextView successScore = (TextView) successRel.findViewById(R.id.player_score);
@@ -253,7 +241,7 @@ public class TicketScoringActivity extends Activity implements OnClickListener {
 				if (failedScoreEntry.length() > 0) {
 					player = this.game.getPlayerById((Integer) v.getTag(R.id.object_playerid));
 	
-					player.newScore(R.id.score_route, "Successful ticket", Integer.parseInt("-" + failedScoreEntry.getText().toString()));
+					player.newScore(R.id.score_route, 0, Integer.parseInt("-" + failedScoreEntry.getText().toString()));
 					RelativeLayout failedRel = (RelativeLayout) findViewById(R.id.playerContainer).findViewWithTag("Player " + v.getTag(R.id.object_playerid).toString());
 					Log.d("REL", failedRel.toString());
 					TextView failedScore = (TextView) failedRel.findViewById(R.id.player_score);
