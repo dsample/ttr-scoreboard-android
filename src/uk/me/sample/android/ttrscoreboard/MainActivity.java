@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -18,7 +17,6 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		Log.d("TTR", "onCreate beginning");
 		super.onCreate(savedInstanceState);
 		// TODO Load game data from storage
 		this.game = Game.load();
@@ -29,7 +27,6 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	@Override
 	protected void onResume() {
-		Log.d("TTR", "onResume beginning");
 		super.onResume();
 
 		Intent intent;

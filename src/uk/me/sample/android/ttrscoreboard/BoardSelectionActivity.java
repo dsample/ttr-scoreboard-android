@@ -9,7 +9,6 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -53,9 +52,7 @@ public class BoardSelectionActivity extends Activity implements OnClickListener 
     		
     		for (int j=0; j < expansions.size() ;j++) {
     			Expansion expansion = expansions.get(j);
-    			Log.d("parentId", Integer.toString(expansion.parentBoardId) + " : " + Integer.toString(board.getId()));
     			if (expansion.parentBoardId == board.getId()) {
-        			Log.d("parentId", Integer.toString(expansion.parentBoardId) + " : " + Integer.toString(board.getId()) + " MATCHED");
         			CheckBox checkbox = new CheckBox(this);
         			checkbox.setText(expansion.name);
         			checkbox.setTag("Expansion " + Integer.toString(expansion.id));

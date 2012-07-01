@@ -9,7 +9,6 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -52,7 +51,6 @@ public class RouteScoringActivity extends Activity implements OnClickListener {
 		}
 
 		RelativeLayout scoreContainer = (RelativeLayout) findViewById(R.id.scorecontainer);
-		Log.d("FOO", scoreContainer.toString());
 		LinearLayout buttonContainer = (LinearLayout) findViewById(R.id.buttoncontainer);
 		
 		buttonContainer.removeAllViews();
@@ -167,7 +165,6 @@ public class RouteScoringActivity extends Activity implements OnClickListener {
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
-		Log.d("optionsmenu", "onPrepareOptionsMenu");
 		MenuItem postgameswitch = menu.findItem(R.id.menuitem_keepopenswitch);
 		postgameswitch.setChecked(keepKeypadOpen);
 		return true;
@@ -187,7 +184,6 @@ public class RouteScoringActivity extends Activity implements OnClickListener {
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		Log.d("optionsmenu", "Selected " + item.getTitle());
 		switch (item.getItemId()) {
 			case R.id.button_continue:
 				Intent intent = new Intent(this, TicketScoringActivity.class);
@@ -201,7 +197,6 @@ public class RouteScoringActivity extends Activity implements OnClickListener {
 				finish();
 				break;
 			case R.id.menuitem_keepopenswitch:
-				Log.d("optionsmenu", "Post game switch");
 				this.keepKeypadOpen = !item.isChecked();
 				if (!keepKeypadOpen) {
 					findViewById(R.id.scorecontainer).setVisibility(View.GONE);
@@ -242,13 +237,11 @@ public class RouteScoringActivity extends Activity implements OnClickListener {
 				if (!keepKeypadOpen) {
 					scoreContainer.setVisibility(View.GONE);
 				}
-				Log.d("BUTTON", "Score button");
 				Integer RouteScore = (Integer) v.getTag(R.id.object_routescore);
 				Integer RouteLength = (Integer) v.getTag(R.id.object_routelength);
 				
 				player.newScore(R.id.score_route, RouteLength, RouteScore);
 				RelativeLayout rel = (RelativeLayout) findViewById(R.id.container).findViewWithTag("Player " + v.getTag(R.id.object_playerid).toString());
-				Log.d("REL", rel.toString());
 				TextView score = (TextView) rel.findViewById(R.id.player_score);
 				score.setText(Integer.toString(player.getTotalScore()));
 				break;

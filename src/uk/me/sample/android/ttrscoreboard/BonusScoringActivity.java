@@ -12,7 +12,6 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -159,10 +158,6 @@ public class BonusScoringActivity extends Activity implements OnCheckedChangeLis
 	// Find out if the checkbox should be checked when reloading a bonus
 	private int playerBonusState(Player player, BoardBonus bonus) {
 		Score score = player.getScore(bonus.getId());
-
-		if (score != null) {
-			Log.d("bonusDetails", Integer.toString(score.reasonId) + " : " + Integer.toString(score.score));
-		}
 		
 		if (score != null) {
 			if (bonus.getMaxNumberOfWinners() == 1) {
@@ -388,8 +383,6 @@ public class BonusScoringActivity extends Activity implements OnCheckedChangeLis
 		// Check that the minimum number of players has been selected, and enable the button
 		// Otherwise, disable the button
 		
-		Log.d("checked", "compoundbutton");
-		
 		LinearLayout l = (LinearLayout) findViewById(R.id.playerContainer);
 		RelativeLayout rel;
 		//Integer playerId = (Integer) buttonView.getTag(R.id.object_playerid);
@@ -470,7 +463,6 @@ public class BonusScoringActivity extends Activity implements OnCheckedChangeLis
 	 * @return
 	 */
 	private int calcDp(int pixels) {
-		Log.d("TTR", "calcDp beginning");
 		return (int) (getResources().getDisplayMetrics().density * pixels + 0.5f);
 	}
 
@@ -479,7 +471,6 @@ public class BonusScoringActivity extends Activity implements OnCheckedChangeLis
 		// TODO Auto-generated method stub
 		switch (parent.getId()) {
 			case R.id.count:
-				Log.d("spinner", "changed");
 				LinearLayout l = (LinearLayout) findViewById(R.id.playerContainer);
 				RelativeLayout rel;
 				BoardBonus bonus = bonuses.get(currentBonusIndex);

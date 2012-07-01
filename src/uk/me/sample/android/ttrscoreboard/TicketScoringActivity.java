@@ -8,7 +8,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -179,7 +178,6 @@ public class TicketScoringActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		Log.d("button", "clicked");
 		Player player;
 		switch (v.getId()) {
 			case R.id.addButton:
@@ -225,7 +223,6 @@ public class TicketScoringActivity extends Activity implements OnClickListener {
 					
 					player.newScore(R.id.score_route, 0, Integer.parseInt(successScoreEntry.getText().toString()));
 					RelativeLayout successRel = (RelativeLayout) findViewById(R.id.playerContainer).findViewWithTag("Player " + v.getTag(R.id.object_playerid).toString());
-					Log.d("REL", successRel.toString());
 					TextView successScore = (TextView) successRel.findViewById(R.id.player_score);
 					successScore.setText(Integer.toString(player.getTotalScore()));
 					
@@ -243,7 +240,6 @@ public class TicketScoringActivity extends Activity implements OnClickListener {
 	
 					player.newScore(R.id.score_route, 0, Integer.parseInt("-" + failedScoreEntry.getText().toString()));
 					RelativeLayout failedRel = (RelativeLayout) findViewById(R.id.playerContainer).findViewWithTag("Player " + v.getTag(R.id.object_playerid).toString());
-					Log.d("REL", failedRel.toString());
 					TextView failedScore = (TextView) failedRel.findViewById(R.id.player_score);
 					failedScore.setText(Integer.toString(player.getTotalScore()));
 	
