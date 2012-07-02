@@ -199,7 +199,9 @@ public class TicketScoringActivity extends Activity implements OnClickListener {
 			case R.id.backspace:
 				TextView scoreEntry1 = (TextView) findViewById(R.id.scoreEntry);
 				String string = scoreEntry1.getText().toString();
-				scoreEntry1.setText(string.substring(0, scoreEntry1.length()-1));
+				if (string.length() > 0) {
+					scoreEntry1.setText(string.substring(0, scoreEntry1.length()-1));
+				}
 				break;
 			case R.id.keypad_button0:
 			case R.id.keypad_button1:
@@ -214,6 +216,9 @@ public class TicketScoringActivity extends Activity implements OnClickListener {
 				Button textview = (Button) v;
 				TextView scoreEntry2 = (TextView) findViewById(R.id.scoreEntry);
 				scoreEntry2.setText(scoreEntry2.getText().toString() + textview.getText().toString());
+				if (Integer.parseInt((String) scoreEntry2.getText()) > 99) {
+					scoreEntry2.setText("99");
+				}
 				break;
 			case R.id.keypad_success:
 				TextView successScoreEntry = (TextView) findViewById(R.id.scoreEntry);
