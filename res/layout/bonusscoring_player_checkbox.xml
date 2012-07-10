@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="48dp" >
 
-    <View
+    <TextView
         android:id="@+id/colour"
         android:layout_width="3dp"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:background="?android:attr/dividerVertical" />
+        android:background="@drawable/list_divider_holo_light" />
 
     <CheckBox
         android:id="@+id/checkbox"

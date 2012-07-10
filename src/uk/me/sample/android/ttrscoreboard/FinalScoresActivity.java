@@ -1,21 +1,22 @@
 package uk.me.sample.android.ttrscoreboard;
 
+import com.actionbarsherlock.app.SherlockActivity;
+
 import uk.me.sample.android.ttrscoreboard.objects.Game;
 import uk.me.sample.android.ttrscoreboard.objects.Player;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
 
-public class FinalScoresActivity extends Activity {
+public class FinalScoresActivity extends SherlockActivity {
 	Game game;
 	
 	@Override
@@ -25,19 +26,19 @@ public class FinalScoresActivity extends Activity {
 		this.game = (Game) getIntent().getParcelableExtra("game");
 
 		setContentView(R.layout.main);
+
+		LinearLayout container = (LinearLayout) findViewById(R.id.container);
+    	container.removeAllViews();
+	
+		for (int i=0; i < game.playerCount() ;i++) {
+			container.addView(playerView(game.getPlayer(i)));
+		}
 	}
 
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		
-    	LinearLayout container = (LinearLayout) findViewById(R.id.container);
-    	container.removeAllViews();
-	
-		for (int i=0; i < game.playerCount() ;i++) {
-			container.addView(playerView(game.getPlayer(i)));
-		}
 	}
 	
 	private RelativeLayout playerView(Player player) {

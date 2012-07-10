@@ -1,14 +1,15 @@
 package uk.me.sample.android.ttrscoreboard;
 
+import com.actionbarsherlock.app.SherlockActivity;
+
 import uk.me.sample.android.ttrscoreboard.objects.*;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-public class MainActivity extends Activity implements OnClickListener {
+public class MainActivity extends SherlockActivity implements OnClickListener {
 	
 	Game game;
 	int state;

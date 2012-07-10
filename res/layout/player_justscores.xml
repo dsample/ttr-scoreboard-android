@@ -3,10 +3,10 @@
    	android:layout_width="match_parent"
    	android:layout_height="48dp" >
 	   
-	<View android:id="@+id/colour"
+	<TextView android:id="@+id/colour"
 	    android:layout_width="3dp"
 	    android:layout_height="match_parent"
-	    android:background="?android:attr/dividerVertical" />
+	    android:background="@drawable/list_divider_holo_light" />
 	
 	<TextView android:id="@+id/name"
 	    android:layout_width="wrap_content"

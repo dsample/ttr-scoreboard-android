@@ -2,14 +2,15 @@ package uk.me.sample.android.ttrscoreboard;
 
 import java.util.ArrayList;
 
+import com.actionbarsherlock.app.SherlockActivity;
+
 import uk.me.sample.android.ttrscoreboard.objects.Game;
 import uk.me.sample.android.ttrscoreboard.objects.Player;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
@@ -17,7 +18,7 @@ import android.widget.TextView;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout.LayoutParams;
 
-public class PlayerSelectionActivity extends Activity implements OnCheckedChangeListener {
+public class PlayerSelectionActivity extends SherlockActivity implements OnCheckedChangeListener {
 
 	Game game;
 	
@@ -27,12 +28,7 @@ public class PlayerSelectionActivity extends Activity implements OnCheckedChange
 		
 		Bundle extras = getIntent().getExtras();
 		game = (Game) extras.getParcelable("game");
-	}
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		
 		setContentView(R.layout.main);
     	LinearLayout container = (LinearLayout) findViewById(R.id.container);
     	container.removeAllViews();
@@ -42,6 +38,11 @@ public class PlayerSelectionActivity extends Activity implements OnCheckedChange
 		for (int i=0; i < players.size() ;i++) {
 			container.addView(playerView(players.get(i)));
 		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
 	}
 	
 	private LinearLayout playerView(Player player) {

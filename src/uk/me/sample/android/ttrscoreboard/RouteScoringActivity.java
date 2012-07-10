@@ -2,16 +2,17 @@ package uk.me.sample.android.ttrscoreboard;
 
 import java.util.ArrayList;
 
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockActivity;
+
 import uk.me.sample.android.ttrscoreboard.objects.Game;
 import uk.me.sample.android.ttrscoreboard.objects.Player;
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -21,28 +22,23 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
 
-public class RouteScoringActivity extends Activity implements OnClickListener {
+public class RouteScoringActivity extends SherlockActivity implements OnClickListener {
 	Game game;
 	Boolean keepKeypadOpen;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
+		setContentView(R.layout.routescoring);
 
 		Bundle extras = getIntent().getExtras();
 		this.game = (Game) extras.getParcelable("game");
 		keepKeypadOpen = false;
 		
-		ActionBar actionbar = getActionBar();
+		ActionBar actionbar = getSupportActionBar();
 		actionbar.setDisplayHomeAsUpEnabled(false);
 		actionbar.setHomeButtonEnabled(false);
 
-		setContentView(R.layout.routescoring);
     	LinearLayout container = (LinearLayout) findViewById(R.id.playerContainer);
     	container.removeAllViews();
 		
@@ -67,14 +63,19 @@ public class RouteScoringActivity extends Activity implements OnClickListener {
 				//button.setTag(R.id.object_playerid, v.getTag());
 				button.setTag(R.id.object_routelength, i+1);
 				button.setTag(R.id.object_routescore, routeScore);
-				LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+				LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+				layoutParams.weight = 1.0f;
 				button.setLayoutParams(layoutParams);
 				buttonContainer.addView(button);
 			}
 		}
 		
 		scoreContainer.setVisibility(RelativeLayout.GONE);
+	}
 
+	@Override
+	protected void onResume() {
+		super.onResume();
 	}
 	
 	private RelativeLayout playerView(Player player) {
@@ -223,12 +224,13 @@ public class RouteScoringActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 			case R.id.addButton:
 				player = this.game.getPlayerById((Integer) v.getTag(R.id.object_playerid));
-
+				scoreContainer.findViewById(R.id.horizontal_divider).setBackgroundColor(player.colour);
 				scoreContainer.setVisibility(View.VISIBLE);
 				for (int i=0; i < buttonContainer.getChildCount() ;i++) {
 					Button button = (Button) buttonContainer.getChildAt(i);
 					//button.setBackgroundColor(player.colour);
-					button.getBackground().setColorFilter(player.colour, android.graphics.PorterDuff.Mode.MULTIPLY);
+					//button.getBackground().clearColorFilter();
+					//button.getBackground().setColorFilter(player.colour, android.graphics.PorterDuff.Mode.MULTIPLY);
 					button.setTag(R.id.object_playerid, player.id);
 				}
 				break;

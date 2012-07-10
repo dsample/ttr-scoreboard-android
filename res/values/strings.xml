@@ -3,7 +3,7 @@
 
     <string name="app_name">Ticket To Ride</string>
 
-    <string name="title_boardselection">Select board</string>
+<!--     <string name="title_boardselection">Select board</string> -->
     <string name="title_playerselection">Select players</string>
     <string name="title_routescoring">Route scores</string>
     <string name="title_ticketscoring">Ticket scores</string>

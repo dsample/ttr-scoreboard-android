@@ -24,10 +24,10 @@
             android:text="Description of bonus"
             android:padding="8dp"/>
         
-		<View android:id="@+id/horizontal_divider" 
+		<TextView android:id="@+id/horizontal_divider" 
 		    android:layout_width="match_parent"
 		    android:layout_height="1dp"
-		    android:background="?android:attr/dividerHorizontal"
+		    android:background="@drawable/list_divider_holo_light"
 		    android:layout_marginLeft="8dp"
 		    android:layout_marginRight="8dp"
 		    android:layout_marginTop="8dp"
