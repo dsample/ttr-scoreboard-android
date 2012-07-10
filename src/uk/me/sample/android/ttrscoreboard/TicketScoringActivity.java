@@ -1,16 +1,17 @@
 package uk.me.sample.android.ttrscoreboard;
 
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+
 import uk.me.sample.android.ttrscoreboard.objects.Game;
 import uk.me.sample.android.ttrscoreboard.objects.Player;
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -20,7 +21,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
 
-public class TicketScoringActivity extends Activity implements OnClickListener {
+public class TicketScoringActivity extends SherlockActivity implements OnClickListener {
 	Game game;
 	Boolean keepKeypadOpen;
 
@@ -29,7 +30,7 @@ public class TicketScoringActivity extends Activity implements OnClickListener {
 		keepKeypadOpen = false;
 		super.onCreate(savedInstanceState);
 		
-		ActionBar actionbar = getActionBar();
+		ActionBar actionbar = getSupportActionBar();
 		actionbar.setDisplayHomeAsUpEnabled(true);
 		actionbar.setHomeButtonEnabled(true);
 		
@@ -40,11 +41,7 @@ public class TicketScoringActivity extends Activity implements OnClickListener {
 		TextView textview = (TextView) findViewById(R.id.scoreEntry);
 		textview.setTypeface(typeface);
 		textview.setTextSize(16f);
-	}
 
-	@Override
-	protected void onResume() {
-		super.onResume();
 		findViewById(R.id.keypad).setVisibility(View.GONE);
 
 /*
@@ -78,6 +75,11 @@ public class TicketScoringActivity extends Activity implements OnClickListener {
 		findViewById(R.id.keypad_button9).setOnClickListener(this);
 		findViewById(R.id.keypad_failed).setOnClickListener(this);
 		findViewById(R.id.keypad_success).setOnClickListener(this);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
 	}
 	
 	private RelativeLayout playerView(Player player) {
@@ -187,13 +189,15 @@ public class TicketScoringActivity extends Activity implements OnClickListener {
 				
 				TextView scoreEntry = (TextView) findViewById(R.id.scoreEntry);
 				scoreEntry.setText("");
+				
+				findViewById(R.id.keypad).findViewById(R.id.horizontal_divider).setBackgroundColor(player.colour);
 
 				ImageButton button = (ImageButton) findViewById(R.id.keypad_success);
-				button.getBackground().setColorFilter(player.colour, android.graphics.PorterDuff.Mode.MULTIPLY);
+				//button.getBackground().setColorFilter(player.colour, android.graphics.PorterDuff.Mode.MULTIPLY);
 				button.setTag(R.id.object_playerid, player.id);
 
 				button = (ImageButton) findViewById(R.id.keypad_failed);
-				button.getBackground().setColorFilter(player.colour, android.graphics.PorterDuff.Mode.MULTIPLY);
+				//button.getBackground().setColorFilter(player.colour, android.graphics.PorterDuff.Mode.MULTIPLY);
 				button.setTag(R.id.object_playerid, player.id);
 				break;
 			case R.id.backspace:

@@ -3,7 +3,7 @@
 
     <string name="app_name">Menolippu</string>
 
-    <string name="title_boardselection">Valitse pelilauta</string>
+<!--       <string name="title_boardselection">Valitse pelilauta</string>-->
     <string name="title_playerselection">Valitse pelaajat</string>
     <string name="title_routescoring">Reittien pistemäärät</string>
     <string name="title_ticketscoring">Menolippujen pistemäärät</string>

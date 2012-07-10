@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="Theme.Sample" parent="Theme.Sherlock.Light">
+        <item name="actionBarStyle">@style/Widget.Styled.ActionBar</item>
+        <item name="android:actionBarStyle">@style/Widget.Styled.ActionBar</item>
+        <!-- 
+        <item name="textAppearanceLarge">@android:style/TextAppearance.Large</item>
+        <item name="textAppearanceMedium">@android:style/TextAppearance.Medium</item>
+        <item name="textAppearanceSmall">@android:style/TextAppearance.Small</item>
+        <item name="textAppearanceLargeInverse">@android:style/TextAppearance.Large.Inverse</item>
+        <item name="textAppearanceMediumInverse">@android:style/TextAppearance.Medium.Inverse</item>
+        <item name="textAppearanceSmallInverse">@android:style/TextAppearance.Small.Inverse</item>
+ -->
+<!--        <item name="background">@drawable/background</item>
+        <item name="android:background">@drawable/background</item> -->
+    </style>
+
+    <style name="Widget.Styled.ActionBar" parent="Widget.Sherlock.Light.ActionBar.Solid">
+        <item name="background">@drawable/background</item>
+        <item name="android:background">@drawable/background</item>
+<!--         <item name="backgroundSplit">@drawable/bg_striped_split</item>
+        <item name="android:backgroundSplit">@drawable/bg_striped_split</item>--> 
+    </style>
+    <!-- 
+        <style name="TextAppearance.Large">
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="TextAppearance.Large.Inverse">
+        <item name="android:textColor">?textColorPrimaryInverse</item>
+        <item name="android:textColorHint">?textColorHintInverse</item>
+        <item name="android:textColorHighlight">?textColorHighlightInverse</item>
+        <item name="android:textColorLink">?textColorLinkInverse</item>
+    </style>
+
+    <style name="TextAppearance.Medium">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextAppearance.Medium.Inverse">
+        <item name="android:textColor">?textColorPrimaryInverse</item>
+        <item name="android:textColorHint">?textColorHintInverse</item>
+        <item name="android:textColorHighlight">?textColorHighlightInverse</item>
+        <item name="android:textColorLink">?textColorLinkInverse</item>
+    </style>
+
+    <style name="TextAppearance.Small">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">?textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.Small.Inverse">
+        <item name="android:textColor">?textColorSecondaryInverse</item>
+        <item name="android:textColorHint">?textColorHintInverse</item>
+        <item name="android:textColorHighlight">?textColorHighlightInverse</item>
+        <item name="android:textColorLink">?textColorLinkInverse</item>
+    </style>
+     -->
+    
+</resources>

@@ -3,18 +3,20 @@ package uk.me.sample.android.ttrscoreboard;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+
 import uk.me.sample.android.ttrscoreboard.objects.BoardBonus;
 import uk.me.sample.android.ttrscoreboard.objects.Game;
 import uk.me.sample.android.ttrscoreboard.objects.Player;
 import uk.me.sample.android.ttrscoreboard.objects.Score;
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -30,7 +32,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
 
-public class BonusScoringActivity extends Activity implements OnCheckedChangeListener, OnItemSelectedListener, OnClickListener {
+public class BonusScoringActivity extends SherlockActivity implements OnCheckedChangeListener, OnItemSelectedListener, OnClickListener {
 	Game game;
 	ArrayList<BoardBonus> bonuses;
 	int currentBonusIndex;
@@ -41,7 +43,7 @@ public class BonusScoringActivity extends Activity implements OnCheckedChangeLis
 		
 		setContentView(R.layout.bonusscoring);
 		
-		ActionBar actionbar = getActionBar();
+		ActionBar actionbar = getSupportActionBar();
 		actionbar.setDisplayHomeAsUpEnabled(true);
 		actionbar.setHomeButtonEnabled(true);
 
@@ -54,12 +56,7 @@ public class BonusScoringActivity extends Activity implements OnCheckedChangeLis
 //		Bundle extras = getIntent().getExtras();
 //		game = (Game) extras.getParcelable("game");
 		
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-		
+			
 		bonuses = game.getBoard().getBonuses();
 		
 		BoardBonus currentBonus = bonuses.get(currentBonusIndex);
@@ -82,6 +79,11 @@ public class BonusScoringActivity extends Activity implements OnCheckedChangeLis
 			radioButtons.clear();
 		}
 */
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
 	}
 	
 	private void createBonusScreen(int bonusId) {
