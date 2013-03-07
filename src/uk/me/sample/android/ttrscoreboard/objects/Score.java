@@ -1,14 +1,18 @@
 package uk.me.sample.android.ttrscoreboard.objects;
 
+import java.util.Calendar;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Score implements Parcelable {
+	public long timestamp;
 	public int reasonId;
 	public int reasonData;
 	public Integer score;
 	
 	public Score(int reasonId, int reasonData, int score) {
+		this.timestamp = Calendar.getInstance().getTimeInMillis();
 		this.reasonId = reasonId;
 		this.reasonData = reasonData;
 		this.score = score;
@@ -23,12 +27,14 @@ public class Score implements Parcelable {
 
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeLong(timestamp);
 		dest.writeInt(reasonId);
 		dest.writeInt(reasonData);
 		dest.writeInt(score);
 	}
 	
 	public Score(Parcel in) {
+		timestamp = in.readLong();
 		reasonId = in.readInt();
 		reasonData = in.readInt();
 		score = in.readInt();
